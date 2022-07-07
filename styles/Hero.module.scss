@@ -1,0 +1,61 @@
+@use 'helpers' as h;
+
+.heroContainer{
+    height: 100vh;
+    width: 100%;
+    //direction, x, y
+    @include h.flexbox(column, center, center);
+    z-index: 1;
+
+    video{
+        object-fit: cover;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        top: 0;
+    }
+
+    .mainDesc{
+        padding: 4em 0em;
+        color: #fff;
+        @include h.flexbox(column, space-around, center);
+
+        h1{
+            font-size: 5.2rem;
+            text-transform: uppercase;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: normal;
+            letter-spacing: 1rem;
+
+            &:hover{
+                cursor: default;
+            }
+        }
+
+        h3{
+            font-size: 2rem;
+
+            &:hover{
+                cursor: default;
+            }
+        }
+
+    }
+
+    .dropdownIcon{
+        background: rgba(255, 255, 255, 0.555);
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        @include h.flexbox(row, center, center);
+        opacity: 0.9;
+        font-size: 1.6rem;
+        margin-bottom: 3em; 
+
+        &:hover{
+            background: white;
+            cursor: pointer;
+        }
+    }
+}
