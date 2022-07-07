@@ -27,6 +27,7 @@
             font-family: Arial, Helvetica, sans-serif;
             font-weight: normal;
             letter-spacing: 1rem;
+            text-align: center;
 
             &:hover{
                 cursor: default;
@@ -58,4 +59,26 @@
             cursor: pointer;
         }
     }
+}
+
+@media screen and (max-width: 1000px){
+
+    .heroContainer{
+        
+        .mainDesc{
+            
+            //needs to have same rooting style before media query
+            h1{
+                font-size: 3rem;
+                letter-spacing: 0.8rem;
+            }
+
+            h3{
+                font-size: 1.5rem;
+            }
+        }
+
+    }
+
+
 }
