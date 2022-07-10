@@ -19,9 +19,9 @@
     }
 
     .mainDesc{
-        padding: 4em 0em;
         color: #fff;
         @include h.flexbox(column, space-around, center);
+        padding-top: 2em;
 
         h1{
             font-size: 5.2rem;
@@ -48,6 +48,7 @@
 
     .dropdownIcon{
         @include h.navigateIcon;
+        margin-bottom: 5em;
     }
 }
 
