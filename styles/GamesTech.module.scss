@@ -1,0 +1,83 @@
+@use 'helpers' as h;
+
+
+.games{
+
+    color: white;
+    background: black;
+    width: 100%;
+    @include h.flexbox(column, space-around, center);
+
+    .button-group{
+        @include h.flexbox(row, center, center);
+        border: #3a963d;
+        overflow: hidden;
+        border-radius: 10px;
+        margin: 3em;
+
+        button{
+            border: 1px solid black;
+            background: #4CAF50;
+            padding: 1em 2em;   
+            color: white;
+            font-size: 1rem;
+
+            &:hover{
+                background: #04AA6D;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .article-group{
+
+        @include h.flexbox(column, space-around, center);
+        font-weight: normal;
+        width: 100%;
+
+        .article{
+            width: 60%;
+            @include h.flexbox(row, space-between, center);
+            background: grey;
+            border-radius: 5px;
+            margin: 1em;
+
+            .article__img{
+                background: red;
+                border-radius: 10px;
+                width: 40%;
+                height: 10rem;
+                margin: 3em;
+                @include h.flexbox(row, center, center);
+            }
+
+            .article__info{
+
+                @include h.flexbox(column, center, flex-start); 
+                width: 60%;
+
+                .article__title{
+                
+                }
+                
+                .article__desc{
+        
+                }
+        
+                .article__source{
+        
+                }
+
+            }
+
+
+    }
+
+
+
+ 
+
+    }
+
+
+}
