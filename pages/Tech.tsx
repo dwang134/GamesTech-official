@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Article from '../components/Article'
 import styles from '../styles/GamesTech.module.scss'
@@ -13,31 +13,35 @@ interface Props{
 
 const Tech:React.FC<Props> = ({data}) => {
 
-  const [articles, setArticles] = useState<article[]>(data.articles);
+  const [articles, setArticles] = useState<any>(data.articles);
   const [results, setResults] = useState<number>(data.totalResults);
   const [query, setQuery] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
+  const [pageNum, setPageNum] = useState<number>(1);
 
   const observer = useRef<any>()
   
   const lastArticleRef = useCallback((node:HTMLElement) => {
-    // if (loading) return 
+    if (loading) return 
     if (observer.current) observer.current?.disconnect()
     observer.current = new IntersectionObserver(async entries=> {
-        if (entries[0].isIntersecting){
-          const newData:News = await fetchArticles(`${process.env.API_KEY}`, "pc%20AND%20components%20%20AND%20technology", 10, 2);
-          // console.log('visible')
-        }
+      if (entries[0].isIntersecting){
+        getArticles();
+      }
     })
     if (node) observer.current.observe(node)
-  }, [])
+  }, [loading])
 
-  // const getArticle = async ()=> {
-  //   const  = await fetchArticles(`${process.env.API_KEY}`, "pc%20AND%20components%20%20AND%20technology", 10, 2);
-    
-  // }
-  console.log(articles);
+  const getArticles = async ()=> {
+    setPageNum(currPage => currPage + 1);
+    const newData= await fetchArticles(`${process.env.API_KEY}`, "pc%20AND%20components%20%20AND%20technology", 10, pageNum);
+    // const newArticles = [...articles, ...newData.articles];
+    // console.log(newArticles);
 
+    setArticles((prevArticles:article[])=> {
+      return [...prevArticles, ...newData.articles]
+    })
+  }
 
   return (
     <>
