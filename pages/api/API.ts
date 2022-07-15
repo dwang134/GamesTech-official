@@ -1,4 +1,3 @@
-import type { StaticImageData } from "next/image"
 
 export const fetchArticles = async(api_key: string, query: string, limit: number,  page: number)=> {
         //max 3 countries, 2 categories, 2 languages
@@ -10,11 +9,11 @@ export const fetchArticles = async(api_key: string, query: string, limit: number
 
 export type News = {
   status: string;
-  totalResults: number;
-  articles: any;
+  totalResults: number; 
+  articles: article[];
 };
 
-export type Article = {
+export type article = {
         source: {id: string | null, name: string},
         author: number | null,
         title: string,

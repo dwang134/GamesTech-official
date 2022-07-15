@@ -34,49 +34,57 @@
         @include h.flexbox(column, space-around, center);
         font-weight: normal;
         width: 100%;
+        background: grey;
+
+        .article-border{
+            border-bottom: 2px solid #fff;
+        }
 
         .article{
-            width: 50%;
+            width: 70%;
             @include h.flexbox(row, center, center);
-            margin: 1em;
-            padding: 1em;
-            border-bottom: 2px solid #fff;
+            padding: 1.3em 0em;
+            // border-bottom: 2px solid #fff;
+
+                .article-container{
+                    @include h.flexbox(row, center, center);
+                    
+                    img{
+                        border-radius: 10px;
+                        overflow: hidden;   
+                        margin: 3em;
+                        object-fit: cover;
+                    }
+        
+                    .article__info{
+        
+                        @include h.flexbox(column, center, flex-start); 
+                        width: 60%;
+                        height: 14rem;
+        
+                        .article__title{
+                            font-weight: bold;
+                            font-size: 1.3rem;
+                        }
+                        
+                        .article__desc{
+                            
+                        }
+                
+                        .article__source{
+                
+                        }
 
 
-                img{
-                    border-radius: 10px;
-                    overflow: hidden;   
-                    margin: 3em;
-                    object-fit: cover;
+                    }
+
                 }
-    
-                .article__info{
-    
-                    @include h.flexbox(column, center, flex-start); 
-                    width: 60%;
-                    padding: 2em;
-    
-                    .article__title{
-                    
-                    }
-                    
-                    .article__desc{
-                    }
-            
-                    .article__source{
-            
-                    }
 
-
-                 }
 
 
         } //.article 
         
-        // .article-border{
-        //     border-bottom: 2px solid #fff;
-        // }
- 
+      
 
     } //.article-group
 
