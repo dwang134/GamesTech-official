@@ -5,20 +5,20 @@ import Article from '../components/Article'
 import styles from '../styles/GamesTech.module.scss'
 import {GetServerSideProps } from 'next'
 import {useState, useRef, useCallback} from 'react'
-import {fetchArticles, News, article, categoryQuery} from './api/API'
+import {fetchArticles, News, article, categoryQuery, categoryList} from './api/API'
 
 interface Props{
   data: News;
-  categoryList: string[];
-  mainQuery?: string;
+  category: string[];
+  mainQuery: string;
 }
 
-const Tech:React.FC<Props> = ({data, categoryList, mainQuery}) => {
+const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
 
-  const [articles, setArticles] = useState<any>(data.articles)
+  const [articles, setArticles] = useState<any[]>(data.articles)
   const [results, setResults] = useState<number>(data.totalResults)
-  // const [query, setQuery] = useState<string>(mainQuery)
-  const [categories, setCategories] = useState<string[]>(categoryList);
+  const [currentQuery, setCurrentQuery] = useState<string>(mainQuery)
+  const [categories, setCategories] = useState<string[]>(category)
   const [loading, setLoading] = useState<boolean>(false)
   const [pageNum, setPageNum] = useState<number>(1)
 
@@ -29,36 +29,47 @@ const Tech:React.FC<Props> = ({data, categoryList, mainQuery}) => {
     if (observer.current) observer.current?.disconnect()
     observer.current = new IntersectionObserver(async entries=> {
       if (entries[0].isIntersecting){
-        getArticles();
+        // let page = pageNum + 1;
+        // setPageNum(page);
+        // console.log(pageNum);
+        getArticles(undefined, true);
       }
     })
     if (node) observer.current.observe(node)
   }, [loading])
 
-  const getArticles = async ()=> {
-    // let page = pageNum + 1;
-    // setPageNum(page);
-    // console.log(pageNum); 
-    setPageNum(currPage => currPage + 1);
-    console.log(pageNum);
-    // setLoading(true);
-    // const newData= await fetchArticles(`${process.env.API_KEY}`, `${query}`, 10, pageNum);
-    // setLoading(false);
-    // console.log(pageNum);
-    // const newArticles = [...articles, ...newData.articles];
-    // console.log(newArticles);
-
-    // setArticles((prevArticles:article[])=> {
-    //   return [...prevArticles, ...newData.articles]
-    // })
+  const getCategories= (categoryName: string) => {
+    console.log(categoryName);
+    const categoryIndex = Object.keys(categoryQuery).indexOf(categoryName);  
+    const customQuery = Object.values(categoryQuery)[categoryIndex];
+    setCurrentQuery(customQuery); //set current query to custom string
+    setPageNum(1); //reset page number
+    getArticles(customQuery, false); //fetch articles
   }
 
-  const callSomeFunction= () => {
-    setPageNum((currPage:number)=> {
-      return currPage+ 1;
-  });
-    console.log(pageNum);
+  const getArticles = async (customQuery?: string, loadMore?: boolean)=> {
+      //load more content or category change
+      if(!loadMore){
+        setLoading(true);
+        const newData= await fetchArticles(`${process.env.API_KEY}`, currentQuery, 10, pageNum);
+        setLoading(false);
+        setArticles(newData.articles); //overewrite current articles
+      }else{
+        setPageNum(currPage => currPage + 1); //ERROR: value not updating creating duplicate articles
+        setLoading(true);
+        const newData= await fetchArticles(`${process.env.API_KEY}`, currentQuery, 10, pageNum);
+        setLoading(false);
+        //spreading new articles across current
+        setArticles((prevArticles: article[])=> {
+          return [...prevArticles, ...newData.articles];
+        })
+      }
+    
   }
+
+  // const callsomeFunction= ()=> {
+  //   console.log('ahlie');
+  // }
 
   return (
     <>
@@ -67,7 +78,7 @@ const Tech:React.FC<Props> = ({data, categoryList, mainQuery}) => {
         {/* buttons */}
         <div className={styles["button-group"]}>
           {categories.map(category=> (
-            <button onClick = {callSomeFunction} key={category}>{category}</button>
+            <button onClick = {()=>getCategories(category)} key={category}>{category}</button> //ERROR: currently takes two clicks to trigger getCategories
           ))}
         </div>
         {/* articles */}
@@ -102,14 +113,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const dotenv = require('dotenv').config()
 
   // Technology: Tech, PC Parts:computer, graphics card, cpu, Nvidia, FAANG
-  const categoryList = ["Tech", "PC Parts", "Nvidia", "FAANG"];
+  const category = categoryList.tech; 
 
   const mainQuery = categoryQuery.Tech;
   
   const data = await fetchArticles(`${process.env.API_KEY}`, categoryQuery.Tech, 10, 1);
 
   return {
-    props: {data, categoryList, mainQuery}
+    props: {data, category, mainQuery}
   }
 
 }
