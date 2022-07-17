@@ -1,7 +1,7 @@
 
-export const fetchArticles = async(api_key: string, query: string, limit: number,  page: number, sortBy?: string, language?: string)=> {
+export const fetchArticles = async(api_key: string, query: string, limit: number,  page: number, language?: string, sortBy?: string)=> {
         //max 3 countries, 2 categories, 2 languages
-        const endpoint = `https://newsapi.org/v2/everything?q=${query}&apiKey=${api_key}&pageSize=${limit}&page=${page}`
+        const endpoint = `https://newsapi.org/v2/everything?apiKey=${api_key}&q=${query}&pageSize=${limit}&page=${page}`
         const res = await fetch(endpoint);
         const data = res.json();
         return data;
@@ -28,15 +28,15 @@ export enum categoryQuery {
 
         // Technology: Tech, Nvidia, FAANG, PC Parts:computer, graphics card, cpu
         //Games: Games, Nintendo, Playstation, Xbox, PC games
-        Tech = "technology",
+        Tech = "new%20AND%20tech", //same thing as "new tech"
         PcParts = "pc%20AND%20computer%20%AND%20gpu%20%AND%20cpu",
         Nvidia = "nvidia%20AND%20gpu",
         FAANG = "facebook%20%AND%20amazon%20%AND%20apple%20%AND%20netflix%20%AND%20google",
-        Games = "games",
+        Games = "games%20AND%20release",
         Nintendo = "nintendo",
         Playstation = "playstation",
         Xbox = "xbox",
-        PcGames = "pc%20AND%20games%20%AND%20steam%20%AND%20riotgames"
+        PC = "pc%20AND%20games%20NOT%20deals"
 }
 
 export const categoryList:{tech: string[], games: string[]} = {
