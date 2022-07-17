@@ -36,10 +36,11 @@ export enum categoryQuery {
         Nintendo = "nintendo",
         Playstation = "playstation",
         Xbox = "xbox",
-        PC = "pc%20AND%20games%20NOT%20deals"
+        // PC = "pc%20AND%20games%20NOT%20deals",
+        Anime = "anime"
 }
 
 export const categoryList:{tech: string[], games: string[]} = {
   tech: ["Tech", "PC Parts", "Nvidia", "FAANG"],
-  games: ["Games", "Nintendo", "Playstation", "Xbox", "PC"]
+  games: ["Games", "Nintendo", "Playstation", "Xbox","Anime"]
 }

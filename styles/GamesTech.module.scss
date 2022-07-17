@@ -34,7 +34,7 @@
         @include h.flexbox(column, space-around, center);
         font-weight: normal;
         width: 100%;
-        background: grey;
+        background: rgba(126, 125, 125, 0.739);
 
         .article-border{
             border-bottom: 2px solid #fff;
@@ -48,12 +48,17 @@
 
                 .article-container{
                     @include h.flexbox(row, center, center);
-                    
+
                     img{
                         border-radius: 10px;
                         overflow: hidden;   
                         margin: 3em;
                         object-fit: cover;
+                        
+                        &:hover{
+                            transform: scale(1.15);
+                            transition: all .3s ease-in-out;
+                        }
                     }
         
                     .article__info{
@@ -65,6 +70,10 @@
                         .article__title{
                             font-weight: bold;
                             font-size: 1.3rem;
+
+                            &:hover{
+                                text-decoration: underline;
+                            }
                         }
                         
                         .article__desc{
