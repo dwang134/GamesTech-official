@@ -20,6 +20,14 @@
         -ms-transform: rotate(30deg);   
         transform: rotate(30deg);
     }
+
+    &:hover{
+        text-shadow:0px 0px 10px #fff;
+        -moz-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        -webkit-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+    }
 }
 
 @mixin navigateIcon{
