@@ -10,7 +10,7 @@ const Footer:React.FC = () => {
       <div className= {styles["footer__main"]}>
         <div className= {styles["footer__desc"]}>
           <Link href= '/'><a className={styles["footer__logo"]}>GamesTech<FaGamepad className={styles.joystick}/></a></Link>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi voluptate magni labore eligendi ducimus perferendis dolores architecto voluptatem facilis laboriosam.</p>
+          <p>GamesTech is a website that focuses on easy to use, sleek, and modern design to better user experience when browsing their favourite articles. Our goal is to provide user the articles they are looking for at the ease of a click, and have the most pleasant experience looking through all the categories they love.</p>
               <div className={styles["group-icons"]}>
               <div className={styles["icon__social"]}><AiFillFacebook/></div>
               <div className={styles["icon__social"]}><AiFillYoutube/></div>

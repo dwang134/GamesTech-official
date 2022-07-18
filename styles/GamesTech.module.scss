@@ -3,23 +3,22 @@
 
 .gamestech{
 
-    color: white;
-    background: black;
+    background: #202023;
     width: 100%;
     @include h.flexbox(column, flex-start, center);
+    color: white;
 
     .button-group{
         @include h.flexbox(row, center, center);
-        border: #3a963d;
-        overflow: hidden;
-        border-radius: 10px;
-        margin: 3em;
+        background: #0e0e10;
+        overflow: auto;
+        border-radius: 10rem;
+        margin-top: 4em; 
 
         button{
-            border: 1px solid black;
-            background: #4CAF50;
+            background: #20202380;
             padding: 1em 2em;   
-            color: white;
+            color: #ff63c3;
             font-size: 1rem;
 
             &:hover{
@@ -34,30 +33,31 @@
         @include h.flexbox(column, space-around, center);
         font-weight: normal;
         width: 100%;
-        background: rgba(126, 125, 125, 0.739);
+        // background: rgba(126, 125, 125, 0.739);
 
         .article-border{
-            border-bottom: 2px solid #fff;
+            border-bottom: 1px solid rgb(145, 144, 144);
         }
 
         .article{
             width: 70%;
-            @include h.flexbox(row, center, center);
+            @include h.flexbox(row, flex-start, center);
             padding: 1.3em 0em;
             // border-bottom: 2px solid #fff;
 
                 .article-container{
-                    @include h.flexbox(row, center, center);
+                    @include h.flexbox(row, flex-start, center);
 
                     img{
-                        border-radius: 10px;
+                        border-radius: 6px;
                         overflow: hidden;   
-                        margin: 3em;
+                        margin: 2em 3em;
                         object-fit: cover;
+                        box-shadow: rgba(61, 61, 61, 0.35) 0px 5px 15px;
                         
                         &:hover{
-                            transform: scale(1.15);
-                            transition: all .3s ease-in-out;
+                            transform: scale(1.1);
+                            transition: all .2s ease-in-out;
                         }
                     }
         
@@ -77,11 +77,11 @@
                         }
                         
                         .article__desc{
-                            
+                            font-weight: normal;
+                            font-size: 1.1rem;
                         }
                 
                         .article__source{
-                
                         }
 
 
