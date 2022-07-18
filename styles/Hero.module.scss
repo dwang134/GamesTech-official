@@ -70,7 +70,7 @@
 .story{
     
     // @extend .hero;
-    // height: 100vh;
+    height: 100vh;
     width: 100%;
     @include h.flexbox(column, space-around, center);
     background: #f6f6f6;
@@ -89,10 +89,10 @@
     .story__carousel{
         @include h.flexbox(row, space-around, center);
         width: 70%;
-
+        
             .story__cards{
                 background: #f6f6f6;
-                width: 250px;
+                width: 300px;
                 @include h.flexbox(column, center, flex-start);
                 border-radius: 10px;
                 overflow: hidden;
@@ -110,8 +110,9 @@
                 }
 
                 .story__title{
+                    @include h.flexbox(row, center, center);
                     color: #000;
-                    padding: 1em;
+                    padding: 0.5em;
                 }
             }
 
@@ -120,20 +121,21 @@
     //swiper
     .story-swiper{
         width: 70%;
-        height: 100%;
-        max-height: none;
         padding: 2em;
-        margin-top: 2em;
 
         .story-swiper__cards{
             background: #f6f6f6;
             border-radius: 10px;
             overflow: hidden;
-            width: 250px;
+            width: 200px;
             box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
             -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
             filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
             @include h.flexbox(column, center, center);
+
+            img{
+                object-fit: cover;
+            }
 
             &:hover{
                 transform: scale(1.15);

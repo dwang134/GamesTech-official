@@ -53,7 +53,7 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech})
           {topStories.map(story=> (
               <Link href={story.url}>
                 <a className= {styles["story__cards"]}>
-                      <img src= {story.urlToImage} width= "250" height= "400"/>
+                      <img src= {story.urlToImage} width= "300" height= "400"/>
                       <h3 className= {styles["story__title"]}>{story.title}</h3>
                 </a>
               </Link>
@@ -72,14 +72,14 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech})
           {otherStories.map((story)=> (
               <SwiperSlide>
               <a href= {story.url} className= {styles["story-swiper__cards"]}>
-              <img src= {story.urlToImage} width= "150" height= "100"/>
+              <img src= {story.urlToImage} width= "200" height= "100"/>
               <h4 className= {styles["story-swiper__title"]}>{story.title}</h4>
               </a>
               </SwiperSlide>
            
           ))}
         </Swiper>
-        <div className= {styles["dropdown-icon"]} onClick = {()=> scroll.scrollToBottom()}><IoMdArrowDropdown/></div>
+        {/* <div className= {styles["dropdown-icon"]} onClick = {()=> scroll.scrollToBottom()}><IoMdArrowDropdown/></div> */}
         </Element>
       </>
   )
