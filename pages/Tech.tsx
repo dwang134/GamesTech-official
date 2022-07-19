@@ -33,8 +33,7 @@ const Tech:React.FC<Props> = ({data}) => {
         {/* articles */}
         <div className={styles["article-group"]}>
           {/* populate */}
-          {articleData.articles.map((article: Article, index: number, arr: Article[]) => (
-                  
+          {articleData.articles.map((article: Article, index: number, arr: Article[]) => 
                   <Link href= {article.url}>  
                     <a className= {styles["article"]}>
                       <img
@@ -55,14 +54,12 @@ const Tech:React.FC<Props> = ({data}) => {
                           {article.source.name}
                         </p>
                       </div>
-                      {/* {isLast && <div className= {styles["article__div"]}></div>} */}
                     </a>
                   </Link>
-                  
-              ))}
+              )}
         </div>
-        {/* .article-group */}
-      </div>
+          {/* .article-group */}
+      </div>   
       {/* .games div*/}
     </>
   );
