@@ -1,0 +1,37 @@
+@use 'helpers' as h;
+
+.footerContainer{
+    @include h.flexbox(row, space-around, center);
+    width: 100%;
+    background: #242424;
+    color: white;
+
+    .footerLogo{
+        @include h.nav-logo;
+        .joystick{
+            display: none;
+        }
+    }
+
+    .footerCenter{
+        @include h.flexbox(column, space-around, center);
+
+        .groupItems{
+            @include h.flexbox(row, center, center);
+            background: red;
+        
+            .groupIcons{
+                @extend .groupItems;
+            }
+        }
+    }
+
+
+    .moveupIcon{
+        @include h.navigateIcon;
+        color: black;
+    }
+}
+
+
+

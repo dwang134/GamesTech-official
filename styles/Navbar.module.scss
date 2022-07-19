@@ -1,24 +1,6 @@
 //@mixin functions to reduce code redundancy
 @use 'helpers' as h;
 
-@mixin nav-logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 3em;
-    font-size: 2rem;
-    font-weight: 200;
-
-    .joystick{
-        position: absolute;
-        margin: 0em 0em 4em 3.3em;
-        padding-bottom: 0.3em;
-        font-size: 0.8em;
-        -ms-transform: rotate(30deg);   
-        transform: rotate(30deg);
-    }
-}
-
 .navbar{
     min-height: 6vh;
     font-size: 1rem;
@@ -26,6 +8,7 @@
     z-index: 999;
     top: 0;
     color: white;
+    position: sticky;
 }
 
 .navbarContainer{
@@ -35,7 +18,7 @@
 }
 
 .navlogo{
-    @include nav-logo;
+    @include h.nav-logo;
 }
 
 .menuIcon{
@@ -67,9 +50,9 @@
 
 }
 
-.menuActive{
-    @extend .navMenu;
-}
+// .menuActive{
+//     @extend .navMenu;
+// }
 
 @media screen and (max-width: 1000px){
     .menuIcon{
@@ -81,18 +64,16 @@
         &:hover{
             cursor: pointer;
         }
-
     }
 
     .navlogo{
-        @include nav-logo; //reduce uncessary re-paste
+        @include h.nav-logo; //reduce uncessary re-paste
         margin-left: 1em;
     }
 
     .navMenu{
         display: none;
     }
-
 
     //when menu icon is clicked
     .menuActive{
@@ -108,7 +89,7 @@
         //can blur out the background as menu is active
 
         li{
-            all: initial;
+            all: initial; //reset
             list-style: none;
             font-size: 1.4rem;
             color: white;
@@ -123,8 +104,6 @@
                 transition: all 0.2s ease-out;
             }
         }
-        
-        
     }
 
 
