@@ -1,72 +1,37 @@
-import Navbar from '../components/Navbar'
-import styles from '../styles/GamesTech.module.scss'
-import Image from 'next/image'
+import Tech from './tech'
+import {fetchArticles, News} from './api/API'
+import {GetServerSideProps } from 'next'
 
-const Games:React.FC = () => {
+interface Props{
+  gamesData: News;
+  query: string;
+  list: string[];
+}
+
+const Games:React.FC<Props> = ({gamesData, query, list}) => {
+
   return (
-    <>
-      <Navbar />
-      <div className={styles["gamestech"]}> 
-      {/* buttons */}
-        <div className= {styles["button-group"]}>
-          <button>Newest</button>
-          <button>Most relevant</button>
-          <button>Popular</button>
-        </div>
-        {/* articles */}
-        <div className= {styles["article-group"]}>
-          <div className={styles["article"]}>
-            <div className={styles["article__img"]}>Image placeholder</div>
-            <div className={styles["article__info"]}>
-              <h2 className={styles["article__title"]}>
-                Article title goes here
-              </h2>
-              <h4 className={styles["article__desc"]}>
-                Article description goes here
-              </h4>
-              <p className={styles["article__source"]}>Source</p>
-            </div>
-          </div>
-          <div className={styles["article"]}>
-            <div className={styles["article__img"]}>Image placeholder</div>
-            <div className={styles["article__info"]}>
-              <h2 className={styles["article__title"]}>
-                Article title goes here
-              </h2>
-              <h4 className={styles["article__desc"]}>
-                Article description goes here
-              </h4>
-              <p className={styles["article__source"]}>Source</p>
-            </div>
-          </div>
-          <div className={styles["article"]}>
-            <div className={styles["article__img"]}>Image placeholder</div>
-            <div className={styles["article__info"]}>
-              <h2 className={styles["article__title"]}>
-                Article title goes here
-              </h2>
-              <h4 className={styles["article__desc"]}>
-                Article description goes here
-              </h4>
-              <p className={styles["article__source"]}>Source</p>
-            </div>
-          </div>
-          <div className={styles["article"]}>
-            <div className={styles["article__img"]}>Image placeholder</div>
-            <div className={styles["article__info"]}>
-              <h2 className={styles["article__title"]}>
-                Article title goes here
-              </h2>
-              <h4 className={styles["article__desc"]}>
-                Article description goes here
-              </h4>
-              <p className={styles["article__source"]}>Source</p>
-            </div>
-          </div>
-        </div>  {/* .article-group */}
-      </div> {/* .games div*/}
-    </>
+    <Tech data={gamesData} query={query} list={list}/>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+
+  const dotenv = require('dotenv').config()
+
+  // const gamesData = await fetchArticles(`${process.env.API_KEY}`, "pc%20AND%20components%20%20AND%20technology", 10, 1);
+  const query = "games%20AND%20release%20AND%20gaming";
+
+  const list = ["Games", "Nintendo", "Playstation", "Xbox", "PC"];
+
+  const gamesData = await fetchArticles(`${process.env.API_KEY}`, query, 10, 1);
+
+  return {
+    props: {gamesData, query, list}
+  }
+
+}
+
+
 
 export default Games
