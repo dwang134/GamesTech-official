@@ -71,21 +71,34 @@
     
     @extend .hero;
 
-    background: grey;
+    background: #f6f6f6;
     bottom: 0;
 
-    h1{
-        color: black;
+    h2{
+        color: #000;
         font-weight: bold;
         font-size: 3rem;
-    }
 
+        &:hover{
+            cursor: default;
+        }
+    }
 
     .story__carousel{
         background: red;
         @include h.flexbox(row, center, center);
         height: 30%;
         width: 80%;
+    }
+
+    .dropdown-icon{
+        background: #505050bb;
+        color: #404040;
+
+        &:hover{
+            background: #505050;
+            color: #000;
+        }
     }
 
 }
