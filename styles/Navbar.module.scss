@@ -55,12 +55,11 @@
         height: 100%;
         width: 70%;
 
-        a{
-            @include h.flexbox(row, center, center);
+        a{  
+            @extend li;
         }
 
         a:hover{
-            @extend li;
             border-bottom: 4px solid rgba(255, 255, 255, 0.562);
             transition: all 0.2s ease-out;
         }
