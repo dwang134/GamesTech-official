@@ -20,12 +20,14 @@ interface Props{
   topTech: Article[];
   otherGames: Article[];
   otherTech: Article[];
+  videos: any[];
 }
 
-const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech}) => {
+const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}) => {
 
   const [topStories, setTopStories] = useState<Article[]>([...topGames, ...topTech])
   const [otherStories, setOtherStories] = useState<Article []>([...otherGames, ...otherTech])
+  const [videoList, setVideoes] = useState<any[]>(videos)
 
   const scrollTo= (location: string) =>{
     scroller.scrollTo(`${location}`, {
@@ -59,7 +61,6 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech})
             slidesPerGroup={1}
             centeredSlides={true}
             loop={true}
-            loopFillGroupWithBlank={true}
             pagination={{
               clickable: true,
             }}
@@ -68,22 +69,21 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech})
               stretch: 0,
               depth: 100,
               modifier: 1,
-              slideShadows: true,
+              // slideShadows: true,
             }}
             navigation={true}
             modules={[EffectCoverflow, Pagination, Navigation]}
             className={styles["video__carousel"]}
           >
-            <SwiperSlide className= {styles["video__item"]}>Slide 1</SwiperSlide>
-            <SwiperSlide className= {styles["video__item"]}>Slide 2</SwiperSlide>
-            <SwiperSlide className= {styles["video__item"]}>Slide 3</SwiperSlide>
-            <SwiperSlide className= {styles["video__item"]}>Slide 4</SwiperSlide>
-            <SwiperSlide className= {styles["video__item"]}>Slide 5</SwiperSlide>
-            <SwiperSlide className= {styles["video__item"]}>Slide 6</SwiperSlide>
-            <SwiperSlide className= {styles["video__item"]}>Slide 7</SwiperSlide>
-            <SwiperSlide className= {styles["video__item"]}>Slide 8</SwiperSlide>
-            <SwiperSlide className= {styles["video__item"]}>Slide 9</SwiperSlide>
+          {videos.map((video)=> (
+          <SwiperSlide>
+            <iframe  src={`https://www.youtube.com/embed/${video.id.videoId}`} className= {styles["video__item"]}>
+            </iframe>
+          </SwiperSlide>
+          ))} 
           </Swiper>
+          {/* <iframe width="420" height="345" src="https://www.youtube.com/embed/r9hvgj-LOQs">
+            </iframe> */}
         <div
           className={styles["dropdown-icon"]}
           onClick={() => scrollTo("stories")}
@@ -97,7 +97,7 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech})
           {topStories.map((story) => (
             <Link href={story.url} key={story.title}>
               <a className={styles["story__cards"]}>
-                <img src={story.urlToImage} width="300" height="400" />
+                <img src={story.urlToImage} width="300" height="600" />
                 <h3 className={styles["story__title"]}>{story.title}</h3>
               </a>
             </Link>
@@ -120,7 +120,7 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech})
                 className={styles["story-swiper__cards"]}
                 key={story.title}
               >
-                <img src={story.urlToImage} width="200" height="100" />
+                <img src={story.urlToImage} width="300" height="100" />
                 <h4 className={styles["story-swiper__title"]}>{story.title}</h4>
               </a>
             </SwiperSlide>
