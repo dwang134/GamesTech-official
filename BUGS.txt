@@ -1,0 +1,14 @@
+GAMES AND TECH
+-URGENT: pageNum not updating
+-need to trigger button twice to fetch categories
+-page container scaling and overall styling
+-mobile responsive: games & tech needs scaling
+
+MAIN
+-overall styling: too clustered
+-smart scrolling button: position needs to be consistent
+-mobile responsive: homepage needs more media query breakpoints and be mobile friendly
+
+FOOTER
+-contact page & support: form needs to send to an email
+-subscription: send form data to server to store user list on sub list
