@@ -69,15 +69,17 @@
 
 .story{
     
-    @extend .hero;
-
+    // @extend .hero;
+    height: 100vh;
+    width: 100%;
+    @include h.flexbox(column, space-around, center);
     background: #f6f6f6;
-    bottom: 0;
 
-    h2{
+    h1{
         color: #000;
         font-weight: bold;
         font-size: 3rem;
+        margin-top: 2em;
 
         &:hover{
             cursor: default;
@@ -85,13 +87,38 @@
     }
 
     .story__carousel{
-        background: red;
-        @include h.flexbox(row, center, center);
-        height: 30%;
-        width: 80%;
+        @include h.flexbox(row, space-around, center);
+        width: 70%;
+
+            .story__cards{
+                background: #f6f6f6;
+                width: 250px;
+                @include h.flexbox(column, center, flex-start);
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+                -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+                filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+
+                &:hover{
+                    transform: scale(1.15);
+                    transition: all .3s ease-in-out;
+                }
+                      
+                img{
+                    object-fit: cover;
+                }
+
+                .story__title{
+                    color: #000;
+                    padding: 1em;
+                }
+            }
+
     }
 
     .dropdown-icon{
+        @include h.navigateIcon; 
         background: #505050bb;
         color: #404040;
 

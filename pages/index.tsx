@@ -5,7 +5,7 @@ import Hero from '../components/HeroSection'
 import Navbar from '../components/Navbar'
 import styles from '../styles/Home.module.scss'
 import {GetServerSideProps } from 'next'
-import {fetchArticles, News, article, categoryQuery, categoryList} from '../pages/api/API'
+import {fetchArticles, News, article, categoryQuery} from '../pages/api/API'
 
 interface Props{ 
   topGames: article[];
@@ -16,20 +16,10 @@ interface Props{
 
 const Home: NextPage<Props> = ({topGames, topTech, otherGames, otherTech}) => {
 
-  const [topStories, setTopStories] = useState<article []>([...topGames, ...topTech])
-  const [otherStories, setOtherStories] = useState<article []>([...otherGames, ...otherTech])
-
-  useEffect(()=> {
-    console.log('ahlie1');
-    console.log(topStories);
-    console.log('ahlie2');
-    console.log(otherStories);
-  })
-
   return (
     <div className= {styles.homeContainer}>
     <Navbar/>
-    <Hero/>
+    <Hero topGames={topGames} topTech={topTech} otherGames= {otherGames} otherTech = {otherTech}/>
     <Footer/>
     </div>
   )
@@ -37,10 +27,10 @@ const Home: NextPage<Props> = ({topGames, topTech, otherGames, otherTech}) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-  let divider = "";
-  //fetch two top articles from games
+  //fetch top 6
   const gamesData:News = await fetchArticles(`${process.env.API_KEY}`, categoryQuery.Games, 6, 1);
   const techData:News = await fetchArticles(`${process.env.API_KEY}`, categoryQuery.Tech, 6, 1);
+  //dividing
   const topGames:article[] = gamesData.articles.slice(0, 2);
   const topTech:article[] = techData.articles.slice(0, 2);
   const otherGames:article[] = gamesData.articles.slice(2,6);
