@@ -1,6 +1,6 @@
 @use 'helpers' as h;
 
-.heroContainer{
+.hero{
 
     height: 100vh;
     width: 100%;
@@ -18,7 +18,7 @@
         
     }
 
-    .mainDesc{
+    .hero__desc{
         color: #fff;
         @include h.flexbox(column, space-around, center);
         padding-top: 2em;
@@ -38,6 +38,7 @@
 
         h3{
             font-size: 2rem;
+            font-weight: 200;
 
             &:hover{
                 cursor: default;
@@ -46,18 +47,18 @@
 
     }
 
-    .dropdownIcon{
+    .dropdown-icon{
         @include h.navigateIcon;
         margin-bottom: 5em;
     }
 }
 
-.videoContainer{
+.video{
 
-    @extend .heroContainer;
+    @extend .hero;
     background-color: #172a4eef;
 
-    .videoCarousel{
+    .video__carousel{
         width: 80%;
         height: 40%;
         background: red;
@@ -66,9 +67,9 @@
     }
 }
 
-.storyContainer{
+.story{
     
-    @extend .heroContainer;
+    @extend .hero;
 
     background: grey;
     bottom: 0;
@@ -80,7 +81,7 @@
     }
 
 
-    .storyCarousel{
+    .story__carousel{
         background: red;
         @include h.flexbox(row, center, center);
         height: 30%;
@@ -91,9 +92,9 @@
 
 @media screen and (max-width: 1000px){
 
-    .heroContainer{
+    .hero{
         
-        .mainDesc{
+        .hero__desc{
             
             //needs to have same rooting style before media query
             h1{
