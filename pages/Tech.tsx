@@ -31,7 +31,7 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
       if (entries[0].isIntersecting){
         // let page = pageNum + 1;
         // setPageNum(page);
-        // console.log(pageNum);
+        // console.log(pageNum);  
         getArticles(undefined, true);
       }
     })
@@ -39,13 +39,21 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
   }, [loading])
 
   const getCategories= (categoryName: string) => {
-    console.log(categoryName);
-    const categoryIndex = Object.keys(categoryQuery).indexOf(categoryName);  
-    const customQuery = Object.values(categoryQuery)[categoryIndex];
-    setCurrentQuery(customQuery); //set current query to custom string
-    setPageNum(1); //reset page number
-    getArticles(customQuery, false); //fetch articles
-  }
+      let categoryIndex:number;
+
+      //pc parts
+      console.log(categoryName);
+      if (categoryName == "PC Parts"){
+        categoryIndex = Object.keys(categoryQuery).indexOf("PcParts");
+      } else{
+        categoryIndex = Object.keys(categoryQuery).indexOf(categoryName);
+      }
+      const customQuery = Object.values(categoryQuery)[categoryIndex];
+      console.log(customQuery);
+      setCurrentQuery(customQuery); 
+      setPageNum(1); 
+      getArticles(customQuery, false); 
+    }
 
   const getArticles = async (customQuery?: string, loadMore?: boolean)=> {
       //load more content or category change
@@ -110,7 +118,7 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-  const dotenv = require('dotenv').config()
+  // const dotenv = require('dotenv').config()
 
   // Technology: Tech, PC Parts:computer, graphics card, cpu, Nvidia, FAANG
   const category = categoryList.tech; 

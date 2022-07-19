@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import styles from '../styles/Hero.module.scss'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import {Element, animateScroll as scroll, scroller } from 'react-scroll'
@@ -30,7 +31,7 @@ const HeroSection:React.FC = () => {
           <div className= {styles["dropdown-icon"]} onClick = {()=> scrollTo("stories")}><IoMdArrowDropdown/></div>
         </Element>
         <Element className= {styles["story"]} name= "stories">
-          <h1>Today&apos;s Top Stories</h1>
+          <h2>Today&apos;s Top Stories</h2>
         <div className= {styles["story__carousel"]}>
           <h3>stories carousel here</h3>
         </div>
