@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    API_KEY: '76050172983746038160371647c77be9'
+    NEWS_API_KEY: '76050172983746038160371647c77be9',
+    YT_API_KEY: 'AIzaSyDiR5hfpbmNQStehjIQmRYHaRbwaTsn3sQ'
   }
 }
 
