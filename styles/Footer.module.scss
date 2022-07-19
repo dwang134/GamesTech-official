@@ -1,36 +1,80 @@
 @use 'helpers' as h;
 
 .footerContainer{
-    @include h.flexbox(row, space-around, center);
+    @include h.flexbox(column, center, center);
     width: 100%;
     background: #242424;
     color: white;
+    padding: 4em 1em 1em 1em;
 
-    .footerLogo{
-        @include h.nav-logo;
-        .joystick{
-            display: none;
-        }
+    h3{
+        font-weight: 300;
     }
+
 
     .footerCenter{
-        @include h.flexbox(column, space-around, center);
+        @include h.flexbox(row, center, flex-start);
+        width: 50%;
 
         .groupItems{
-            @include h.flexbox(row, center, center);
-            background: red;
-        
-            .groupIcons{
-                @extend .groupItems;
+            @include h.flexbox(column, center, flex-start);
+            width: 30%;
+
+
+            .items{
+                @include h.flexbox(column, space-around, flex-start);
+                font-weight: 200;
+                color: rgb(190, 189, 189);
             }
+
+            // .groupIcons{
+            //     @include h.flexbox(row, space-evenly, center);
+            //     font-size: 2rem;
+            //     width: 100%;
+            // }
         }
     }
 
+    // .footerRight{
+    //     @include h.flexbox(row, center, center);
+    //     width: 25%;
 
-    .moveupIcon{
-        @include h.navigateIcon;
-        color: black;
+    
+    // }
+
+
+    .footerBottom{
+        margin-top: 3em;
+        @include h.flexbox(row, space-around, center);
+        width: 100%;
+
+        .footerLogo{
+            @include h.nav-logo;
+            
+            margin: 0;  
+            font-size: 1.5rem;
+    
+            .joystick{
+                margin: 0em 0em 4em 3.3em;
+            }
+        }
+
+        h5{
+            margin-right: 4em;
+            font-weight: 200;
+        }
+
+        .upIcon{
+            @include h.navigateIcon;
+            margin-bottom: 0em;
+            color: black;
+            margin: 0;
+        }
     }
+
+   
+
+
 }
 
 

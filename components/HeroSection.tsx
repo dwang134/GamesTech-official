@@ -20,7 +20,7 @@ const HeroSection:React.FC = () => {
           <div className= {styles.dropdownIcon}><IoMdArrowDropdown/></div>
         </section>
         <section className= {styles.storyContainer}>
-          <h1>Today's Top Stories</h1>
+          <h1>Today&apos;s Top Stories</h1>
         <div className= {styles.storyCarousel}>
           <h3>stories carousel here</h3>
         </div>
