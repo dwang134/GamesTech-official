@@ -8,11 +8,20 @@ export const fetchArticles = async(api_key: string, query: string, limit: number
 }
 
 export const fetchVideos = async(api_key: string, part: string, channelId:string, limit: number, orderBy:string, query:string, type:string, videoDefinition:string, publishedAfter?:Date)=> {
-        const endpoint = `https://www.googleapis.com/youtube/v3/search?${api_key}&part=${part}&channelId=${channelId}&maxResults=${limit}&order=${orderBy}&q=${query}&type=${type}&videoDefinition=${videoDefinition}&publishedAfter=${publishedAfter}`
+        // const endpoint = `https://www.googleapis.com/youtube/v3/search?key=${api_key}&part=${part}&channelId=${channelId}&q=${query}`
+        const endpoint = `https://www.googleapis.com/youtube/v3/search?key=${api_key}&part=${part}&channelId=${channelId}&maxResults=${limit}&order=${orderBy}&q=${query}&type=${type}&videoDefinition=${videoDefinition}`
         const res = await fetch(endpoint);
         const data = res.json();
         return data;
 }
+
+ /*
+  'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCbu2SsF-Or3Rsn3NxqODImw&maxResults=6&order=date&q=trailer&type=video&videoDefinition=high&key=[YOUR_API_KEY]' \
+  --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
+  --header 'Accept: application/json' \
+  --compressed
+  */
+
 
 export type News = {
   status: string;
@@ -36,9 +45,9 @@ export enum categoryQuery {
         // Technology: Tech, Nvidia, FAANG, PC Parts:computer, graphics card, cpu
         //Games: Games, Nintendo, Playstation, Xbox, PC games
         Tech = "new%20AND%20tech", //same thing as "new tech"
-        PcParts = "pc%20AND%20computer%20%AND%20gpu%20%AND%20cpu",
+        Hardwares = "monitor%20and%20gpu%20and%20cpu%20-deals",
         Nvidia = "nvidia%20AND%20gpu",
-        FAANG = "facebook%20%AND%20amazon%20%AND%20apple%20%AND%20netflix%20%AND%20google",
+        FAANG = "facebook%20and%20amazon%20and%20apple%20and%20netflix%20and%20google%20-deals%20-cnet",
         Games = "games%20AND%20release",
         Nintendo = "nintendo",
         Playstation = "playstation",
@@ -48,6 +57,6 @@ export enum categoryQuery {
 }
 
 export const categoryList:{tech: string[], games: string[]} = {
-  tech: ["Tech", "PC Parts", "Nvidia", "FAANG"],
-  games: ["Games", "Nintendo", "Playstation", "Xbox","Anime"]
+  tech: ["Tech", "Hardwares", "Nvidia", "FAANG"],
+  games: ["Games", "Nintendo", "Playstation", "Xbox", "Anime"]
 }
