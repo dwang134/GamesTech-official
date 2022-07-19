@@ -38,3 +38,8 @@ export enum categoryQuery {
         Xbox = "xbox",
         PcGames = "pc%20AND%20games%20%AND%20steam%20%AND%20riotgames"
 }
+
+export const categoryList:{tech: string[], games: string[]} = {
+  tech: ["Tech", "PC Parts", "Nvidia", "FAANG"],
+  games: ["Games", "Nintendo", "Playstation", "Xbox", "PC"]
+}
