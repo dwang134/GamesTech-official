@@ -19,7 +19,7 @@ export const Article:React.FC<Props> = ({lastArticleRef, article, lastIndex}) =>
           src={article.urlToImage}
           alt="Picture of article"
           width="400"
-          height="220"
+          height="200"
         />
         <div className={styles["article__info"]}>
           <h2 className={styles["article__title"]}>
