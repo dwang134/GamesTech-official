@@ -1,4 +1,4 @@
-import Tech from './tech'
+import Tech from './Tech'
 
 import {fetchArticles, News, categoryQuery, categoryList} from './api/API'
 import {GetServerSideProps} from 'next'
