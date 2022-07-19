@@ -9,21 +9,23 @@ import {fetchArticles, News, article, categoryQuery} from './api/API'
 
 interface Props{
   data: News;
-  query?: string;
-  list: string[];
+  categoryList: string[];
+  mainQuery?: string;
 }
 
-const Tech:React.FC<Props> = ({data, query, list}) => {
+const Tech:React.FC<Props> = ({data, categoryList, mainQuery}) => {
 
   const [articles, setArticles] = useState<any>(data.articles)
   const [results, setResults] = useState<number>(data.totalResults)
+  // const [query, setQuery] = useState<string>(mainQuery)
+  const [categories, setCategories] = useState<string[]>(categoryList);
   const [loading, setLoading] = useState<boolean>(false)
   const [pageNum, setPageNum] = useState<number>(1)
-  const [categories, setCatgories] = useState<string[]>(list)
 
   const observer = useRef<any>()
   
   const lastArticleRef = useCallback((node:HTMLElement) => {
+    if (loading) return 
     if (observer.current) observer.current?.disconnect()
     observer.current = new IntersectionObserver(async entries=> {
       if (entries[0].isIntersecting){
@@ -65,7 +67,7 @@ const Tech:React.FC<Props> = ({data, query, list}) => {
         {/* buttons */}
         <div className={styles["button-group"]}>
           {categories.map(category=> (
-            <button onClick = {callSomeFunction}>{category}</button>
+            <button onClick = {callSomeFunction} key={category}>{category}</button>
           ))}
         </div>
         {/* articles */}
@@ -91,22 +93,23 @@ const Tech:React.FC<Props> = ({data, query, list}) => {
       </div> {/* .games div*/}
     </>
   );
+
   
 }
-
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const dotenv = require('dotenv').config()
 
-  const query = "pc%20AND%20components%20%AND%20technology";
+  // Technology: Tech, PC Parts:computer, graphics card, cpu, Nvidia, FAANG
+  const categoryList = ["Tech", "PC Parts", "Nvidia", "FAANG"];
 
-  const list = ["Tech", "PC Parts", "Nvidia", "FAANG"];
-
-  const data = await fetchArticles(`${process.env.API_KEY}`, query, 10, 1);
+  const mainQuery = categoryQuery.Tech;
+  
+  const data = await fetchArticles(`${process.env.API_KEY}`, categoryQuery.Tech, 10, 1);
 
   return {
-    props: {data, query, list}
+    props: {data, categoryList, mainQuery}
   }
 
 }
