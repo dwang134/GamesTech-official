@@ -57,14 +57,14 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
       //load more content or category change
       if(!loadMore){
         setLoading(true);
-        const newData= await fetchArticles(`${process.env.API_KEY}`, currentQuery, 10, pageNum);
+        const newData= await fetchArticles(`${process.env.NEWS_API_KEY}`, currentQuery, 10, pageNum);
         setLoading(false);
         setArticles(newData.articles);
         setPageNum(1);
       }else{
         setPageNum(currPage => currPage + 1); //ERROR: value not updating creating duplicate articles
         setLoading(true);
-        const newData= await fetchArticles(`${process.env.API_KEY}`, currentQuery, 10, pageNum);
+        const newData= await fetchArticles(`${process.env.NEWS_API_KEY}`, currentQuery, 10, pageNum);
         setLoading(false);
         //spreading new articles across current
         setArticles((prevArticles: Article[])=> {
@@ -121,7 +121,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const mainQuery = categoryQuery.Tech;
   
-  const data = await fetchArticles(`${process.env.API_KEY}`, categoryQuery.Tech, 10, 1);
+  const data = await fetchArticles(`${process.env.NEWS_API_KEY}`, categoryQuery.Tech, 10, 1);
 
   return {
     props: {data, category, mainQuery}

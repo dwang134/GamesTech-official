@@ -5,6 +5,7 @@
     font-weight: 200;
     color: white;
     @include h.flexbox(column, center, center);
+    width: 100%;
 
     .footer__main{
         @include h.flexbox(row, space-around, flex-start);
@@ -85,16 +86,14 @@
             }
 
             #email{
-                height: 41px;
+                height: 2rem;
                 padding: 0.7rem;
                 border-radius: 3px;
                 border-width: 1px;
                 border-style: solid;
                 border-color:#b7cad6;
                 background-color:#ffffff;
-                box-sizing: border-box;
                 width: 100%;
-                min-width: 300px;
             }
         }
     
@@ -106,3 +105,20 @@
     }
 
 }
+
+@media screen and (max-width: 1200px){
+    .footer{
+
+            .footer__main{
+
+                .footer__news{
+
+                    #email{
+                        background: red;
+                    }
+                }
+            }
+
+    }
+
+}//media query
