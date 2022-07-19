@@ -1,12 +1,13 @@
 @use 'helpers' as h;
 
 
-.games{
+.gamestech{
 
     color: white;
     background: black;
     width: 100%;
-    @include h.flexbox(column, space-around, center);
+    height: 100vh;
+    @include h.flexbox(column, flex-start, center);
 
     .button-group{
         @include h.flexbox(row, center, center);

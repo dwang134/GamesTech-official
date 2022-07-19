@@ -6,7 +6,7 @@ const Games:React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className={styles["games"]}> 
+      <div className={styles["gamestech"]}> 
       {/* buttons */}
         <div className= {styles["button-group"]}>
           <button>Newest</button>
