@@ -15,7 +15,7 @@ interface Props{
 
 const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
 
-  const [articles, setArticles] = useState<any[]>(data.articles)
+  const [articles, setArticles] = useState<article[]>(data.articles)
   const [results, setResults] = useState<number>(data.totalResults)
   const [currentQuery, setCurrentQuery] = useState<string>(mainQuery)
   const [categories, setCategories] = useState<string[]>(category)

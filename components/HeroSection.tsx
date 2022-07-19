@@ -2,8 +2,20 @@ import {useState} from 'react'
 import styles from '../styles/Hero.module.scss'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import {Element, animateScroll as scroll, scroller } from 'react-scroll'
+import {article} from '../pages/api/API'
+import Link from 'next/link'
 
-const HeroSection:React.FC = () => {
+interface Props{ 
+  topGames: article[];
+  topTech: article[];
+  otherGames: article[];
+  otherTech: article[];
+}
+
+const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech}) => {
+
+  const [topStories, setTopStories] = useState<article[]>([...topGames, ...topTech])
+  const [otherStories, setOtherStories] = useState<article []>([...otherGames, ...otherTech])
 
   const scrollTo= (location: string) =>{
     scroller.scrollTo(`${location}`, {
@@ -31,9 +43,16 @@ const HeroSection:React.FC = () => {
           <div className= {styles["dropdown-icon"]} onClick = {()=> scrollTo("stories")}><IoMdArrowDropdown/></div>
         </Element>
         <Element className= {styles["story"]} name= "stories">
-          <h2>Today&apos;s Top Stories</h2>
-        <div className= {styles["story__carousel"]}>
-          <h3>stories carousel here</h3>
+          <h1>Today&apos;s Top Stories</h1>
+           <div className= {styles["story__carousel"]}>
+          {topStories.map(story=> (
+              <Link href={story.url}>
+                <a className= {styles["story__cards"]}>
+                      <img src= {story.urlToImage} width= "250" height= "500"></img>
+                      <h3 className= {styles["story__title"]}>{story.title}</h3>
+                </a>
+              </Link>
+          ))}
         </div>
         <div className= {styles["dropdown-icon"]} onClick = {()=> scroll.scrollToBottom()}><IoMdArrowDropdown/></div>
         </Element>
