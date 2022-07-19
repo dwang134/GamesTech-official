@@ -60,9 +60,15 @@
 
     .video__carousel{
         width: 80%;
-        height: 40%;
-        background: red;
-        @include h.flexbox(row, center, center);
+        height: 50%;
+        background: #000;
+        
+        .video__item{
+            width: 11rem;
+            height: 100%;
+            @include h.flexbox(row, center, center);
+            background: #f6f6f6;
+        }
         
     }
 }
@@ -79,7 +85,7 @@
         color: #000;
         font-weight: bold;
         font-size: 3rem;
-        margin-top: 2em;
+        margin-top: 1.8em;
 
         &:hover{
             cursor: default;
@@ -122,6 +128,7 @@
     .story-swiper{
         width: 70%;
         padding: 2em;
+        margin-bottom: 4em;
 
         .story-swiper__cards{
             background: #f6f6f6;

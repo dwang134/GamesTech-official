@@ -85,7 +85,16 @@
             }
 
             #email{
-                color: white;
+                height: 41px;
+                padding: 0.7rem;
+                border-radius: 3px;
+                border-width: 1px;
+                border-style: solid;
+                border-color:#b7cad6;
+                background-color:#ffffff;
+                box-sizing: border-box;
+                width: 100%;
+                min-width: 300px;
             }
         }
     

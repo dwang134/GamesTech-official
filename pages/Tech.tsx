@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import Article from '../components/Article'
+import NewsArticle from '../components/NewsArticle'
 import styles from '../styles/GamesTech.module.scss'
 import {GetServerSideProps } from 'next'
-import {useState, useRef, useCallback} from 'react'
-import {fetchArticles, News, article, categoryQuery, categoryList} from './api/API'
+import {useState, useRef, useCallback, useEffect} from 'react'
+import {fetchArticles, News, Article, categoryQuery, categoryList} from './api/API'
 
 interface Props{
   data: News;
@@ -15,7 +14,7 @@ interface Props{
 
 const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
 
-  const [articles, setArticles] = useState<article[]>(data.articles)
+  const [articles, setArticles] = useState<any>(data.articles)
   const [results, setResults] = useState<number>(data.totalResults)
   const [currentQuery, setCurrentQuery] = useState<string>(mainQuery)
   const [categories, setCategories] = useState<string[]>(category)
@@ -40,19 +39,18 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
 
   const getCategories= (categoryName: string) => {
       let categoryIndex:number;
-
       //pc parts
-      console.log(categoryName);
+      // console.log(categoryName);
       if (categoryName == "PC Parts"){
         categoryIndex = Object.keys(categoryQuery).indexOf("PcParts");
       } else{
         categoryIndex = Object.keys(categoryQuery).indexOf(categoryName);
       }
       const customQuery = Object.values(categoryQuery)[categoryIndex];
-      console.log(customQuery);
+      console.log(currentQuery);
       setCurrentQuery(customQuery); 
-      setPageNum(1); 
-      getArticles(customQuery, false); 
+      setPageNum(1);
+      getArticles(undefined, false);
     }
 
   const getArticles = async (customQuery?: string, loadMore?: boolean)=> {
@@ -61,24 +59,22 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
         setLoading(true);
         const newData= await fetchArticles(`${process.env.API_KEY}`, currentQuery, 10, pageNum);
         setLoading(false);
-        setArticles(newData.articles); //overewrite current articles
+        setArticles(newData.articles);
+        setPageNum(1);
       }else{
         setPageNum(currPage => currPage + 1); //ERROR: value not updating creating duplicate articles
         setLoading(true);
         const newData= await fetchArticles(`${process.env.API_KEY}`, currentQuery, 10, pageNum);
         setLoading(false);
         //spreading new articles across current
-        setArticles((prevArticles: article[])=> {
+        setArticles((prevArticles: Article[])=> {
           return [...prevArticles, ...newData.articles];
         })
       }
     
   }
 
-  // const callsomeFunction= ()=> {
-  //   console.log('ahlie');
-  // }
-
+  
   return (
     <>
       <Navbar />
@@ -92,18 +88,18 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
         {/* articles */}
         <div className={styles["article-group"]}>
           {/* populate */}
-          {articles.map((article: article, index: number, articles: article[]) => {
+          {articles.map((article: Article, index: number, articles: Article[]) => {
 
                   let lastIndex = false;
                   //if last index
                   if (articles.length === index + 1){
                     lastIndex= true;
                     return(
-                      <Article lastArticleRef= {lastArticleRef} article= {article} lastIndex= {lastIndex} key= {article.title} />
+                      <NewsArticle lastArticleRef= {lastArticleRef} article= {article} lastIndex= {lastIndex} key= {article.title} />
                     )
                   }else{
                       return (
-                       <Article article= {article} lastIndex= {lastIndex} key= {article.title}/>
+                       <NewsArticle article= {article} lastIndex= {lastIndex} key= {article.title}/>
                       )
                   }
 
