@@ -7,6 +7,13 @@ export const fetchArticles = async(api_key: string, query: string, limit: number
         return data;
 }
 
+export const fetchVideos = async(api_key: string, part: string, channelId:string, limit: number, orderBy:string, query:string, type:string, videoDefinition:string, publishedAfter?:Date)=> {
+        const endpoint = `https://www.googleapis.com/youtube/v3/search?${api_key}&part=${part}&channelId=${channelId}&maxResults=${limit}&order=${orderBy}&q=${query}&type=${type}&videoDefinition=${videoDefinition}&publishedAfter=${publishedAfter}`
+        const res = await fetch(endpoint);
+        const data = res.json();
+        return data;
+}
+
 export type News = {
   status: string;
   totalResults: number; 

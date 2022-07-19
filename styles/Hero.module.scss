@@ -76,16 +76,14 @@
 .story{
     
     // @extend .hero;
-    height: 100vh;
     width: 100%;
-    @include h.flexbox(column, space-around, center);
+    @include h.flexbox(column, space-between, center);
     background: #f6f6f6;
 
     h1{
         color: #000;
         font-weight: bold;
-        font-size: 3rem;
-        margin-top: 1.8em;
+        font-size: 2.5rem;
 
         &:hover{
             cursor: default;
@@ -93,12 +91,14 @@
     }
 
     .story__carousel{
-        @include h.flexbox(row, space-around, center);
+        @include h.flexbox(row, space-around, center);  
         width: 70%;
-        
+
             .story__cards{
                 background: #f6f6f6;
-                width: 300px;
+                width: 14rem;
+                height: 25rem;
+
                 @include h.flexbox(column, center, flex-start);
                 border-radius: 10px;
                 overflow: hidden;
@@ -119,6 +119,7 @@
                     @include h.flexbox(row, center, center);
                     color: #000;
                     padding: 0.5em;
+                    font-size: 1rem;
                 }
             }
 
@@ -126,7 +127,7 @@
 
     //swiper
     .story-swiper{
-        width: 70%;
+        width: 80%;
         padding: 2em;
         margin-bottom: 4em;
 
@@ -151,7 +152,8 @@
 
             .story-swiper__title{
                 color: #000;
-                padding: 0.5em;
+                padding: 0.3em 0.1em;
+                font-size: 0.8rem;
             }
         }
     }
@@ -171,7 +173,7 @@
 
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1200px){
 
     .hero{
         
@@ -187,8 +189,32 @@
                 font-size: 1.5rem;
             }
         }
-
     }
+
+        .story{
+            box-sizing: content-box;
+
+            .story__carousel{
+                background: red;
+                //make x overflow scroll
+                overflow: hidden;
+
+                .story__cards{
+                    margin: 0.5em 1em;
+                    height: 25em;
+                    width: 40%;
+
+                    img{
+                        
+                    }
+
+                    .story__title{
+                    }
+
+                }
+            }
+        }
+
 
 
 }

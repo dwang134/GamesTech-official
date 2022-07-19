@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable jsx-a11y/alt-text */
 import {useState} from 'react'
 import styles from '../styles/Hero.module.scss'
 import {IoMdArrowDropdown} from 'react-icons/io'
