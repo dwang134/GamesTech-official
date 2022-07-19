@@ -1,5 +1,6 @@
 //@mixin functions to reduce code redundancy
 @use 'helpers' as h;
+$unblur: blur(0px);
 
 .navbar{
     min-height: 6vh;
