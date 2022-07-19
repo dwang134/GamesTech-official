@@ -4,6 +4,11 @@ import {IoMdArrowDropdown} from 'react-icons/io'
 import {Element, animateScroll as scroll, scroller } from 'react-scroll'
 import {article} from '../pages/api/API'
 import Link from 'next/link'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Scrollbar } from "swiper";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/scrollbar";
 
 interface Props{ 
   topGames: article[];
@@ -48,12 +53,32 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech})
           {topStories.map(story=> (
               <Link href={story.url}>
                 <a className= {styles["story__cards"]}>
-                      <img src= {story.urlToImage} width= "250" height= "500"></img>
+                      <img src= {story.urlToImage} width= "250" height= "400"/>
                       <h3 className= {styles["story__title"]}>{story.title}</h3>
                 </a>
               </Link>
           ))}
         </div>
+        <Swiper
+        slidesPerView={5}
+        spaceBetween={0}
+        freeMode={true}
+        scrollbar={{
+          hide: true,
+        }}
+        modules={[FreeMode, Scrollbar]}
+        className={styles["story-swiper"]}
+        >
+          {otherStories.map((story)=> (
+              <SwiperSlide>
+              <a href= {story.url} className= {styles["story-swiper__cards"]}>
+              <img src= {story.urlToImage} width= "150" height= "100"/>
+              <h4 className= {styles["story-swiper__title"]}>{story.title}</h4>
+              </a>
+              </SwiperSlide>
+           
+          ))}
+        </Swiper>
         <div className= {styles["dropdown-icon"]} onClick = {()=> scroll.scrollToBottom()}><IoMdArrowDropdown/></div>
         </Element>
       </>
