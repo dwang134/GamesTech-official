@@ -10,10 +10,10 @@ export const fetchArticles = async(api_key: string, query: string, limit: number
 export type News = {
   status: string;
   totalResults: number; 
-  articles: article[];
+  articles: Article[];
 };
 
-export type article = {
+export type Article = {
         source: {id: string | null, name: string},
         author: number | null,
         title: string,
