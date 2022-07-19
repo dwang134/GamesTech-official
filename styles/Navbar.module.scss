@@ -9,56 +9,55 @@
     top: 0;
     color: white;
     position: sticky;
-}
-
-.navbarContainer{
     width: 100%;
     @include h.flexbox(row, space-between, center);
     height: 5rem;
-}
 
-.navlogo{
-    @include h.nav-logo;
-}
-
-.menuIcon{
-    display: none;
-}
-
-.navMenu{
-    @include h.flexbox(row, center, center);
-    width: 30%;
-    margin-right: 5em;
-    height: 100%;
-
-    li{ 
-        list-style: none;
+    .navbar__logo{
+        @include h.logo;
+    }
+    
+    .menu-icon{
+        display: none;
+    }
+    
+    .menu-default{
         @include h.flexbox(row, center, center);
-        font-size: 1.1rem;
+        width: 30%;
+        margin-right: 5em;
         height: 100%;
-        width: 70%;
-
-        a{  
-            @extend li;
+    
+        li{ 
+            list-style: none;
+            @include h.flexbox(row, center, center);
+            font-size: 1.1rem;
+            height: 100%;
+            width: 70%;
+    
+            a{  
+                @extend li;
+            }
+    
+            a:hover{
+                border-bottom: 4px solid rgba(255, 255, 255, 0.562);
+                transition: all 0.2s ease-out;
+            }
         }
-
-        a:hover{
-            border-bottom: 4px solid rgba(255, 255, 255, 0.562);
-            transition: all 0.2s ease-out;
-        }
+    
+    }
+    
+    .menu-active{
+        @extend .menu-default;
     }
 
 }
 
-// .menuActive{
-//     @extend .navMenu;
-// }
 
 @media screen and (max-width: 1000px){
-    .menuIcon{
+
+    .menu-icon{
         @include h.flexbox(row, center, center);
         font-size: 1.5rem;
-        color: white;
         margin-right: 1em;
 
         &:hover{
@@ -66,17 +65,21 @@
         }
     }
 
-    .navlogo{
-        @include h.nav-logo; //reduce uncessary re-paste
+    .navbar__logo{
+        @include h.logo; //reduce uncessary re-paste
         margin-left: 1em;
     }
 
-    .navMenu{
+    .navbar__menu{
+        display: none;
+    }
+
+    .menu-default{
         display: none;
     }
 
     //when menu icon is clicked
-    .menuActive{
+    .menu-active{
         @include h.flexbox(column, space-around, center);
         background: #242222;
         flex-direction: column;
@@ -92,7 +95,6 @@
             all: initial; //reset
             list-style: none;
             font-size: 1.4rem;
-            color: white;
             @include h.flexbox(row, center, center);
             height: 100%;
 
