@@ -23,16 +23,16 @@ const Footer:React.FC = () => {
             <h3>Contact Us</h3>
             <div className= {styles["items"]}>
               <Link href= '/contact'><a>Contact</a></Link>
-              <Link href= '/contact'><a>Support</a></Link>
+              <Link href= '/support'><a>Support</a></Link>
             </div>
           </div>
           <div className={styles["group-items"]}>
             <h3>How this is built</h3>
             <div className= {styles["items"]}>
-              <Link href="/built">
+              <Link href="/read">
                 <a className={styles["links"]}>Read here</a>
               </Link>
-              <Link href="/built">
+              <Link href="/faq">
                 <a className={styles["links"]}>F.A.Q</a>
               </Link>
             </div>
