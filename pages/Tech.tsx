@@ -1,24 +1,43 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Article from '../components/Article'
 import styles from '../styles/GamesTech.module.scss'
 import {GetServerSideProps } from 'next'
-import Image from 'next/image'
-import {useState} from 'react'
-import {fetchArticles, News, Article} from './API'
-import placeholder from '../public/GamesPlaceholder.png'
-import type { StaticImageData } from "next/image"
-import Link from 'next/link'
-
+import {useState, useRef, useCallback} from 'react'
+import {fetchArticles, News, article} from './api/API'
 
 interface Props{
-  data: News | (() => News)
+  data: News;
 }
 
 const Tech:React.FC<Props> = ({data}) => {
 
-  const [articleData, setArticleData] = useState<News>(data);
+  const [articles, setArticles] = useState<article[]>(data.articles);
+  const [results, setResults] = useState<number>(data.totalResults);
+  const [query, setQuery] = useState<string>("")
+  const [loading, setLoading] = useState<boolean>(false)
 
-  console.log(data);
+  const observer = useRef<any>()
+  
+  const lastArticleRef = useCallback((node:HTMLElement) => {
+    // if (loading) return 
+    if (observer.current) observer.current?.disconnect()
+    observer.current = new IntersectionObserver(async entries=> {
+        if (entries[0].isIntersecting){
+          const newData:News = await fetchArticles(`${process.env.API_KEY}`, "pc%20AND%20components%20%20AND%20technology", 10, 2);
+          // console.log('visible')
+        }
+    })
+    if (node) observer.current.observe(node)
+  }, [])
+
+  // const getArticle = async ()=> {
+  //   const  = await fetchArticles(`${process.env.API_KEY}`, "pc%20AND%20components%20%20AND%20technology", 10, 2);
+    
+  // }
+  console.log(articles);
+
 
   return (
     <>
@@ -33,34 +52,24 @@ const Tech:React.FC<Props> = ({data}) => {
         {/* articles */}
         <div className={styles["article-group"]}>
           {/* populate */}
-          {articleData.articles.map((article: Article, index: number, arr: Article[]) => 
-                  <Link href= {article.url}>  
-                    <a className= {styles["article"]}>
-                      <img
-                        src={article.urlToImage}
-                        alt="Picture of article"
-                        className={styles["article_img"]}
-                        width="500"
-                        height="300"
-                      />
-                      <div className={styles["article__info"]}>
-                        <h2 className={styles["article__title"]}>
-                          {article.title}
-                        </h2>
-                        <h4 className={styles["article__desc"]}>
-                          {article.description}
-                        </h4>
-                        <p className={styles["article__source"]}>
-                          {article.source.name}
-                        </p>
-                      </div>
-                    </a>
-                  </Link>
-              )}
-        </div>
-          {/* .article-group */}
-      </div>   
-      {/* .games div*/}
+          {articles.map((article: article, index: number, articles: article[]) => {
+
+                  let lastIndex = false;
+                  //if last index
+                  if (articles.length === index + 1){
+                    lastIndex= true;
+                    return(
+                      <Article lastArticleRef= {lastArticleRef} article= {article} lastIndex= {lastIndex} key= {article.title} />
+                    )
+                  }else{
+                      return (
+                       <Article article= {article} lastIndex= {lastIndex} key= {article.title}/>
+                      )
+                  }
+
+          })} {/*.map*/}
+        </div> {/* .article-group */}
+      </div> {/* .games div*/}
     </>
   );
 
