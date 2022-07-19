@@ -1,9 +1,11 @@
 //@mixin functions to reduce code redundancy
+@use 'helpers' as h;
+
 @mixin nav-logo{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 2em;   
+    margin-left: 3em;
     font-size: 2rem;
     font-weight: 200;
 
@@ -17,13 +19,6 @@
     }
 }
 
-@mixin flexbox($direction, $positionX, $positionY){
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $positionX;
-    align-items: $positionY;
-}
-
 .navbar{
     min-height: 6vh;
     font-size: 1rem;
@@ -35,7 +30,7 @@
 
 .navbarContainer{
     width: 100%;
-    @include flexbox(row, space-between, center);
+    @include h.flexbox(row, space-between, center);
     height: 5rem;
 }
 
@@ -48,20 +43,20 @@
 }
 
 .navMenu{
-    @include flexbox(row, center, center);
+    @include h.flexbox(row, center, center);
     width: 30%;
-    margin-right: 1em;
+    margin-right: 5em;
     height: 100%;
 
     li{ 
         list-style: none;
-        @include flexbox(row, center, center);
+        @include h.flexbox(row, center, center);
         font-size: 1.1rem;
         height: 100%;
         width: 70%;
 
         a{
-            @include flexbox(row, center, center);
+            @include h.flexbox(row, center, center);
         }
 
         a:hover{
@@ -79,7 +74,7 @@
 
 @media screen and (max-width: 1000px){
     .menuIcon{
-        @include flexbox(row, center, center);
+        @include h.flexbox(row, center, center);
         font-size: 1.5rem;
         color: white;
         margin-right: 1em;
@@ -102,7 +97,7 @@
 
     //when menu icon is clicked
     .menuActive{
-        @include flexbox(column, space-around, center);
+        @include h.flexbox(column, space-around, center);
         background: #242222;
         flex-direction: column;
         position: absolute;
@@ -118,7 +113,7 @@
             list-style: none;
             font-size: 1.4rem;
             color: white;
-            @include flexbox(row, center, center);
+            @include h.flexbox(row, center, center);
             height: 100%;
 
             &:hover{
