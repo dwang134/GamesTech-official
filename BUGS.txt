@@ -1,6 +1,5 @@
 GAMES AND TECH
--URGENT: pageNum not updating
--need to trigger button twice to fetch categories
+-tech: clicking on faang nvidia and then faang again breaks the button
 -page container scaling and overall styling
 -mobile responsive: games & tech needs scaling
 

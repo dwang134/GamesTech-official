@@ -30,11 +30,12 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
     if (observer.current) observer.current?.disconnect()
     observer.current = new IntersectionObserver(async entries=> {
       if (entries[0].isIntersecting){
+        setLoadMore(true);
         setPageNum(prevPage=> prevPage + 1);
       }
     })
     if (node) observer.current.observe(node)
-  }, [loading])
+  }, [loading, hasMore])
 
   const getCategories= (categoryName: string) => {
       let categoryIndex:number;
@@ -46,9 +47,9 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
         categoryIndex = Object.keys(categoryQuery).indexOf(categoryName);
       }
       const customQuery = Object.values(categoryQuery)[categoryIndex];
+      setLoadMore(false);
       setCurrentQuery(customQuery); //call useEffect
       setPageNum(1);
-
       // console.log(currentQuery);
       // setCurrentQuery(customQuery); 
       // setPageNum(1);
@@ -65,8 +66,6 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
         setPageNum(1);
       }else{
         setPageNum(currPage => currPage + 1); //ERROR: value not updating creating duplicate articles
-        console.log("THIS IS NOT FROM USEEFFECt");
-        console.log(pageNum);
         // setLoading(true);
         // const newData= await fetchArticles(`${process.env.NEWS_API_KEY}`, currentQuery, 10, pageNum);
         // setLoading(false);
@@ -92,7 +91,6 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
         setArticles((prevArticles: Article[])=> {
           return [...new Set([...prevArticles, ...newData.articles])]
         })
-        setLoadMore(true);
         setHasMore(newData.articles.length > 0);
         setLoading(false);
       })
