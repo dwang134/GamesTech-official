@@ -1,4 +1,4 @@
-import Tech from './tech'
+import Tech from './Tech'
 
 import {fetchArticles, News, categoryQuery, categoryList} from './api/API'
 import {GetServerSideProps} from 'next'
@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const dotenv = require('dotenv').config()
 
-  const gamesData = await fetchArticles(`${process.env.API_KEY}`, categoryQuery.Games, 10, 1);
+  const gamesData = await fetchArticles(`${process.env.NEWS_API_KEY}`, categoryQuery.Games, 10, 1);
 
   return {
     props: {gamesData}

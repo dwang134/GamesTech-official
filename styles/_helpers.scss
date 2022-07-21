@@ -5,6 +5,11 @@
     align-items: $positionY;
 }
 
+@mixin fullscreen{
+    width: 100vw;
+    height: 100vh;
+}
+
 @mixin logo{
     @include flexbox(row, center, center);
     margin-left: 3em;

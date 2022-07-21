@@ -3,7 +3,7 @@
 .hero{
 
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     //direction, x, y
     @include h.flexbox(column, space-around, center);
     padding-top: 3em;
@@ -11,7 +11,7 @@
     video{
         object-fit: cover;
         position: fixed;
-        width: 100%;
+        width: 100vw;
         height: 100vh;
         z-index: -1;
         top: 0;
@@ -55,29 +55,51 @@
 
 .video{
 
-    @extend .hero;
-    background-color: #172a4eef;
+    width: 100vw;
+    height: 100vh;
+    @include h.flexbox(column, space-around, center);
+    background: linear-gradient(90deg, rgb(19, 7, 23) 0%, rgb(0, 0, 0) 100%);
 
     .video__carousel{
-        width: 80%;
-        height: 40%;
-        background: red;
-        @include h.flexbox(row, center, center);
+        width: 100%;
+        height: 80%;
         
+        .video__item{
+            margin-top: 5em;
+            width: 50rem;
+            height: 80%;
+            border: 1px solid #000;
+            border-radius: 8px;
+            user-select: none;
+        }
+        
+    }
+
+    .dropdown-icon{
+        @include h.navigateIcon; 
+        // background: #505050bb;
+        // color: #404040;
+
+        &:hover{
+            // background: #505050;
+            // color: #000;
+        }
     }
 }
 
 .story{
     
-    @extend .hero;
-
+    // @extend .hero;
+    width: 100vw;
+    height: 100vh;
+    @include h.flexbox(column, space-between, center);
     background: #f6f6f6;
-    bottom: 0;
 
-    h2{
+    h1{
         color: #000;
         font-weight: bold;
         font-size: 3rem;
+        padding-top: 6rem;
 
         &:hover{
             cursor: default;
@@ -85,13 +107,76 @@
     }
 
     .story__carousel{
-        background: red;
-        @include h.flexbox(row, center, center);
-        height: 30%;
-        width: 80%;
+        @include h.flexbox(row, space-around, center);  
+        width: 60%;
+
+            .story__cards{
+                background: #f6f6f6;
+                width: 16%;
+                height: 35rem;
+
+                @include h.flexbox(column, center, flex-start);
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+                -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+                filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+
+                &:hover{
+                    transform: scale(1.15);
+                    transition: all .3s ease-in-out;
+                }
+                      
+                img{
+                    object-fit: cover;
+                }
+
+                .story__title{
+                    @include h.flexbox(row, center, center);
+                    color: #000;
+                    padding: 0.5em 0.8em;
+                    font-size: 1.2rem;
+                }
+            }
+
     }
 
+    //swiper
+    .story-swiper{
+        width: 70%;
+        padding: 2em;
+        margin-bottom: 4em;
+
+        .story-swiper__cards{
+            background: #f6f6f6;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 80%;
+            box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+            -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+            filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+            @include h.flexbox(column, center, center);
+
+            img{
+                object-fit: cover;
+            }
+
+            &:hover{
+                transform: scale(1.15);
+                transition: all .3s ease-in-out;
+            }
+
+            .story-swiper__title{
+                color: #000;
+                padding: 0.5em;
+                font-size: 1rem;
+            }
+        }
+    }
+
+
     .dropdown-icon{
+        @include h.navigateIcon; 
         background: #505050bb;
         color: #404040;
 
@@ -101,9 +186,10 @@
         }
     }
 
+
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1512px){
 
     .hero{
         
@@ -119,8 +205,80 @@
                 font-size: 1.5rem;
             }
         }
-
     }
+
+        .story{
+            box-sizing: content-box;
+
+            .story__carousel{
+                background: red;
+                //make x overflow scroll
+                overflow: hidden;
+                width: 70%;
+
+                .story__cards{
+                    margin: 0.5em 1em;
+                    width: 14rem;
+                    height: 25rem;
+
+                    img{
+                        
+                    }
+
+                    .story__title{
+                    }
+
+                }
+            }
+        }
+
+
+
+}
+
+@media screen and (max-width: 1200px){
+
+    .hero{
+        
+        .hero__desc{
+            
+            //needs to have same rooting style before media query
+            h1{
+                font-size: 3rem;
+                letter-spacing: 0.8rem;
+            }
+
+            h3{
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+        .story{
+            box-sizing: content-box;
+
+            .story__carousel{
+                width: 70%;
+                background: red;
+                //make x overflow scroll
+                overflow: hidden;
+
+                .story__cards{
+                    margin: 0.5em 1em;
+                    height: 25em;
+                    width: 40%;
+
+                    img{
+                        
+                    }
+
+                    .story__title{
+                    }
+
+                }
+            }
+        }
+
 
 
 }
