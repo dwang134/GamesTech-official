@@ -31,7 +31,7 @@ const Particle:React.FC = () => {
         enable: true
       },
       background: {
-        color: "#162336"
+        color: "#000"
       },
       particles: {
         // canvas borders bounce factors

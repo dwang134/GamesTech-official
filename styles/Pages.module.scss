@@ -3,14 +3,13 @@
 .main-container{
     @include h.fullscreen;
     @include h.flexbox(column, flex-start, center);
+    margin-top: 1em;
 
     .questions{
         color: #fff;
-        @include h.flexbox(column, center, flex-start);
-        background: red;    
-        width: 80%;
-        margin: 1em 0em;
+        width: 70%;
         padding: 0.5em 1em;
+        font-style: Arial;
 
         .questions__title{
             
@@ -29,6 +28,11 @@
     ul{
         color: #fff;
         font-size: 1.5rem;
+    }
+
+    p{
+        color: #fff;
+        
     }
 
 }
