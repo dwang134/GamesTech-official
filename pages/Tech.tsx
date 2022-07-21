@@ -20,6 +20,8 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
   const [categories, setCategories] = useState<string[]>(category)
   const [loading, setLoading] = useState<boolean>(false)
   const [pageNum, setPageNum] = useState<number>(1)
+  const [loadMore, setLoadMore] = useState<boolean>(false);
+  const [hasMore, setHasMore] = useState<boolean>(false);
 
   const observer = useRef<any>()
   
@@ -28,10 +30,7 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
     if (observer.current) observer.current?.disconnect()
     observer.current = new IntersectionObserver(async entries=> {
       if (entries[0].isIntersecting){
-        // let page = pageNum + 1;
-        // setPageNum(page);
-        // console.log(pageNum);  
-        getArticles(undefined, true);
+        setPageNum(prevPage=> prevPage + 1);
       }
     })
     if (node) observer.current.observe(node)
@@ -47,10 +46,13 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
         categoryIndex = Object.keys(categoryQuery).indexOf(categoryName);
       }
       const customQuery = Object.values(categoryQuery)[categoryIndex];
-      console.log(currentQuery);
-      setCurrentQuery(customQuery); 
+      setCurrentQuery(customQuery); //call useEffect
       setPageNum(1);
-      getArticles(undefined, false);
+
+      // console.log(currentQuery);
+      // setCurrentQuery(customQuery); 
+      // setPageNum(1);
+      // getArticles(undefined, false);
     }
 
   const getArticles = async (customQuery?: string, loadMore?: boolean)=> {
@@ -63,18 +65,40 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
         setPageNum(1);
       }else{
         setPageNum(currPage => currPage + 1); //ERROR: value not updating creating duplicate articles
-        setLoading(true);
-        const newData= await fetchArticles(`${process.env.NEWS_API_KEY}`, currentQuery, 10, pageNum);
-        setLoading(false);
-        //spreading new articles across current
-        setArticles((prevArticles: Article[])=> {
-          return [...prevArticles, ...newData.articles];
-        })
+        console.log("THIS IS NOT FROM USEEFFECt");
+        console.log(pageNum);
+        // setLoading(true);
+        // const newData= await fetchArticles(`${process.env.NEWS_API_KEY}`, currentQuery, 10, pageNum);
+        // setLoading(false);
+        // //spreading new articles across current
+        // setArticles((prevArticles: Article[])=> {
+        //   return [...prevArticles, ...newData.articles];
+        // })
       }
-    
   }
 
-  
+  // useEffect(()=> {
+
+  // }, [])
+
+  useEffect(()=> {
+    if (!loadMore){
+      setLoading(true);
+      fetchArticles(`${process.env.NEWS_API_KEY}`, currentQuery, 10, pageNum).then((newData) => setArticles(newData.articles));
+      setLoading(false);
+    }else{
+      setLoading(true);
+      fetchArticles(`${process.env.NEWS_API_KEY}`, currentQuery, 10, pageNum).then((newData) => {
+        setArticles((prevArticles: Article[])=> {
+          return [...new Set([...prevArticles, ...newData.articles])]
+        })
+        setLoadMore(true);
+        setHasMore(newData.articles.length > 0);
+        setLoading(false);
+      })
+    }
+  }, [pageNum, currentQuery]);
+
   return (
     <>
       <Navbar />
