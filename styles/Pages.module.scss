@@ -7,7 +7,7 @@
     .questions{
         color: #fff;
         @include h.flexbox(column, center, flex-start);
-        background: red;
+        background: red;    
         width: 80%;
         margin: 1em 0em;
         padding: 0.5em 1em;
