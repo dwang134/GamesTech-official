@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable jsx-a11y/alt-text */
 import {useState} from 'react'
-import styles from '../styles/Hero.module.scss'
 import {IoMdArrowDropdown} from 'react-icons/io'
 import {Element, animateScroll as scroll, scroller } from 'react-scroll'
 import {Article} from '../pages/api/API'
@@ -39,20 +38,20 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
   
   return (
     <>
-      <section className={styles["hero"]}>
+      <section className="hero">
         <video src="/videos/Game_room_trim.mp4" autoPlay loop muted></video>
-          <div className={styles["hero__intro"]}>
-            <h1 className= {styles["hero__title"]}>games and tech news</h1>
-            <h3 className= {styles["hero__desc"]}>start browsing today</h3>
+          <div className="hero__intro">
+            <h1 className= "hero__title">games and tech news</h1>
+            <h3 className= "hero__desc">start browsing today</h3>
           </div>
-          <div className={styles["hero__icon"]}> 
-            <div className= {styles["dropdown-icon"]} onClick={() => scrollTo("video")}>
+          <div className="hero__icon"> 
+            <div className= "dropdown-icon" onClick={() => scrollTo("video")}>
             <IoMdArrowDropdown/>
             </div>
           </div>
         {/* insert the scroll icon here */}
       </section>
-      <Element className={styles["video"]} name="video">
+      <Element className="video" name="video">
           <Swiper
             effect={"coverflow"}
             slidesPerView={3}
@@ -72,30 +71,30 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
             }}
             navigation={true}
             modules={[EffectCoverflow, Pagination, Navigation]}
-            className={styles["video__carousel"]}
+            className="video__carousel"
           >
           {videos.map((video)=> (
           <SwiperSlide>
-            <iframe  src={`https://www.youtube.com/embed/${video.id.videoId}`} className= {styles["video__item"]}>
+            <iframe  src={`https://www.youtube.com/embed/${video.id.videoId}`} className= "video__item">
             </iframe>
           </SwiperSlide>
           ))} 
           </Swiper>
-          <div className={styles["hero__icon"]}> 
-            <div className= {styles["dropdown-icon"]} onClick={() => scrollTo("stories")}>
+          <div className="hero__icon"> 
+            <div className= "dropdown-icon" onClick={() => scrollTo("stories")}>
             <IoMdArrowDropdown/>
             </div>
         </div>
       </Element>
-      <Element className={styles["story"]} name="stories">
-        <div className= {styles["story__container"]}>
+      <Element className="story" name="stories">
+        <div className= "story__container">
           <h1>Today&apos;s Top Stories</h1>
-          <div className={styles["story__carousel"]}>
+          <div className="story__carousel">
             {topStories.map((story) => (
               <Link href={story.url} key={story.title}>
-                <a className={styles["story__cards"]}>
+                <a className="story__cards">
                   <img src={story.urlToImage} width="300" height="600" />
-                  <h3 className={styles["story__title"]}>{story.title}</h3>
+                  <h3 className="story__title">{story.title}</h3>
                 </a>
               </Link>
             ))}
@@ -112,17 +111,17 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
         // }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className={styles["story-swiper"]}
+        className="story-swiper"
       >
      {otherStories.map((story) => (
             <SwiperSlide>
               <a
                 href={story.url}
-                className={styles["story-swiper__cards"]}
+                className="story-swiper__cards"
                 key={story.title}
               >
                 <img src={story.urlToImage} width="250" height="150" />
-                <h4 className={styles["story-swiper__title"]}>{story.title}</h4>
+                <h4 className="story-swiper__title">{story.title}</h4>
               </a>
             </SwiperSlide>
           ))}

@@ -1,4 +1,4 @@
-@use '../styles/abstracts/helpers' as h;
+@use '../abstracts/helpers' as h;
 
 .main-container{
     @include h.fullscreen;

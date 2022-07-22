@@ -3,7 +3,6 @@ import {useState, useEffect} from 'react'
 import Footer from '../components/Footer'
 import Hero from '../components/HeroSection'
 import Navbar from '../components/Navbar'
-import styles from '../styles/Home.module.scss'
 import {GetServerSideProps } from 'next'
 import {fetchArticles, fetchVideos, News, Article, categoryQuery} from '../pages/api/API'
 
@@ -23,7 +22,7 @@ const Home: NextPage<Props> = ({topGames, topTech, otherGames, otherTech, videoD
   })
 
   return (
-    <div className= {styles.homeContainer}>
+    <div className= "homeContainer">
     <Navbar/>
     <Hero topGames={topGames} topTech={topTech} otherGames= {otherGames} otherTech = {otherTech} videos={videoData.items} />
     <Footer/>

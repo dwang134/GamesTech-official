@@ -3,7 +3,6 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
 import { loadTrianglesPreset } from "tsparticles-preset-triangles";
-import styles from '../styles/Particle.module.scss'
 
 const Particle:React.FC = () => {
 
@@ -22,7 +21,7 @@ const Particle:React.FC = () => {
 
   return (
     <Particles
-    id={styles.tsparticles}
+    id="tsparticles"
     init={customInit}
     // loaded={particlesLoaded}
     options={{

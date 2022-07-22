@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import styles from '../styles/GamesTech.module.scss'
 import Link from 'next/link'
 import {Article} from '../pages/api/API'
 
@@ -12,23 +11,23 @@ interface Props{
 
 export const NewsArticle:React.FC<Props> = ({lastArticleRef, article, lastIndex}) => {
   return (
-    <div ref= {lastArticleRef} className= {lastIndex ? styles["article"] : `${styles["article"]} ${styles["article-border"]}`}>
+    <div ref= {lastArticleRef} className= {lastIndex ? "article" : "article article-border"}>
     <Link href= {article.url}>  
-      <a className= {styles["article-container"]}>
+      <a className= "article-container">
         <img
           src={article.urlToImage}
           alt="Picture of article"
           width="400"
           height="200"
         />
-        <div className={styles["article__info"]}>
-          <h2 className={styles["article__title"]}>
+        <div className="article__info">
+          <h2 className="article__title">
             {article.title}
           </h2>
-          <h4 className={styles["article__desc"]}>
+          <h4 className="article__desc">
             {article.description}
           </h4>
-          <p className={styles["article__source"]}>
+          <p className="article__source">
             {article.source.name}
           </p>
         </div>

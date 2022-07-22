@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Navbar from '../components/Navbar'
 import NewsArticle from '../components/NewsArticle'
-import styles from '../styles/GamesTech.module.scss'
 import {GetServerSideProps } from 'next'
 import {useState, useRef, useCallback, useEffect} from 'react'
 import {fetchArticles, News, Article, categoryQuery, categoryList} from './api/API'
@@ -12,7 +11,7 @@ interface Props{
   mainQuery: string;
 }
 
-const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
+const GamesTech:React.FC<Props> = ({data, category, mainQuery}) => {
 
   const [articles, setArticles] = useState<any>(data.articles)
   const [results, setResults] = useState<number>(data.totalResults)
@@ -100,15 +99,15 @@ const Tech:React.FC<Props> = ({data, category, mainQuery}) => {
   return (
     <>
       <Navbar />
-      <div className={styles["gamestech"]}>
+      <div className="gamestech">
         {/* buttons */}
-        <div className={styles["button-group"]}>
+        <div className="button-group">
           {categories.map(category=> (
             <button onClick = {()=>getCategories(category)} key={category}>{category}</button> //ERROR: currently takes two clicks to trigger getCategories
           ))}
         </div>
         {/* articles */}
-        <div className={styles["article-group"]}>
+        <div className="article-group">
           {/* populate */}
           {articles.map((article: Article, index: number, articles: Article[]) => {
 
@@ -151,4 +150,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 }
 
-export default Tech
+export default GamesTech

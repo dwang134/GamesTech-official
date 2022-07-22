@@ -1,5 +1,5 @@
 //@mixin functions to reduce code redundancy
-@use '../styles/abstracts/helpers' as h;
+@use '../abstracts/helpers' as h;
 
 .navbar{
     min-height: 7vh;

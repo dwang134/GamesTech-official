@@ -1,10 +1,9 @@
 import Particle from '../components/Particle'
-import styles from '../styles/Pages.module.scss'
 
 const Readme = () => {
 
   return (
-    <div className= {styles["main-container"]}>
+    <div className= "main-container">
     <h1>Things to talk about</h1>
     <ul>
       <li>React</li>
