@@ -1,7 +1,7 @@
 @use 'helpers' as h;
 
 .footer{
-    background: #242424;
+    background: #151414;
     font-weight: 200;
     color: white;
     @include h.flexbox(column, center, center);

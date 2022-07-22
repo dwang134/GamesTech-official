@@ -40,21 +40,20 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
   return (
     <>
       <section className={styles["hero"]}>
-        <video src="/videos/Game_room.mp4" autoPlay loop muted></video>
-        <div className={styles["hero__desc"]}>
-          <h1>games and tech news</h1>
-          <h3>start browsing today</h3>
-        </div>
-        <div
-          className={styles["dropdown-icon"]}
-          onClick={() => scrollTo("video")}
-        >
-          <IoMdArrowDropdown />
-        </div>
+        <video src="/videos/Game_room_trim.mp4" autoPlay loop muted></video>
+          <div className={styles["hero__intro"]}>
+            <h1 className= {styles["hero__title"]}>games and tech news</h1>
+            <h3 className= {styles["hero__desc"]}>start browsing today</h3>
+          </div>
+          <div className={styles["hero__icon"]}> 
+            <div className= {styles["dropdown-icon"]} onClick={() => scrollTo("video")}>
+            <IoMdArrowDropdown/>
+            </div>
+          </div>
         {/* insert the scroll icon here */}
       </section>
       <Element className={styles["video"]} name="video">
-          <Swiper
+          {/* <Swiper
             effect={"coverflow"}
             slidesPerView={3}
             spaceBetween={30}
@@ -81,51 +80,55 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
             </iframe>
           </SwiperSlide>
           ))} 
-          </Swiper>
+          </Swiper> */}
           {/* <iframe width="420" height="345" src="https://www.youtube.com/embed/r9hvgj-LOQs">
             </iframe> */}
-        <div
-          className={styles["dropdown-icon"]}
-          onClick={() => scrollTo("stories")}
-        >
-          <IoMdArrowDropdown />
+         <div className={styles["hero__icon"]}> 
+            <div className= {styles["dropdown-icon"]} onClick={() => scrollTo("stories")}>
+            <IoMdArrowDropdown/>
+            </div>
         </div>
       </Element>
       <Element className={styles["story"]} name="stories">
-        <h1>Today&apos;s Top Stories</h1>
-        <div className={styles["story__carousel"]}>
-          {topStories.map((story) => (
-            <Link href={story.url} key={story.title}>
-              <a className={styles["story__cards"]}>
-                <img src={story.urlToImage} width="300" height="600" />
-                <h3 className={styles["story__title"]}>{story.title}</h3>
-              </a>
-            </Link>
-          ))}
+        <div className= {styles["story__container"]}>
+          <h1>Today&apos;s Top Stories</h1>
+          <div className={styles["story__carousel"]}>
+            {topStories.map((story) => (
+              <Link href={story.url} key={story.title}>
+                <a className={styles["story__cards"]}>
+                  <img src={story.urlToImage} width="300" height="600" />
+                  <h3 className={styles["story__title"]}>{story.title}</h3>
+                </a>
+              </Link>
+            ))}
+          </div>
         </div>
         <Swiper
-          slidesPerView={5}
-          spaceBetween={0}
-          freeMode={true}
-          scrollbar={{
-            hide: true,
-          }}
-          modules={[FreeMode, Scrollbar]}
-          className={styles["story-swiper"]}
-        >
-          {otherStories.map((story) => (
+        slidesPerView={3}
+        spaceBetween={30}
+        slidesPerGroup={3}
+        loop={true}
+        loopFillGroupWithBlank={true}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className={styles["story-swiper"]}
+      >
+     {otherStories.map((story) => (
             <SwiperSlide>
               <a
                 href={story.url}
                 className={styles["story-swiper__cards"]}
                 key={story.title}
               >
-                <img src={story.urlToImage} width="300" height="100" />
+                <img src={story.urlToImage} width="250" height="150" />
                 <h4 className={styles["story-swiper__title"]}>{story.title}</h4>
               </a>
             </SwiperSlide>
           ))}
-        </Swiper>
+      </Swiper>
         {/* <div className= {styles["dropdown-icon"]} onClick = {()=> scroll.scrollToBottom()}><IoMdArrowDropdown/></div> */}
       </Element>
     </>

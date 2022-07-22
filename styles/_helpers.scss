@@ -40,9 +40,9 @@
     border-radius: 50%;
     width: 3rem;
     height: 3rem;
-    @include flexbox(row, center, center);
+    @include  flexbox(row, center, center);
     opacity: 0.9;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     margin-bottom: 3em; 
 
     &:hover{

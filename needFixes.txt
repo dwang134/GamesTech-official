@@ -1,0 +1,15 @@
+GAMES AND TECH
+-tech: clicking on faang nvidia and then faang again breaks the button
+-page container scaling and overall styling
+-mobile responsive: games & tech needs scaling
+
+MAIN
+-overall styling: too clustered
+-main page is slow
+-smart scrolling button: position needs to be consistent
+-mobile responsive: homepage needs more media query breakpoints and be mobile friendly
+
+FOOTER
+-contact page & support: form needs to send to an email
+-subscription: send form data to server to store user list on sub list
+-flex grow for fluidity when minimizing

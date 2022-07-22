@@ -6,7 +6,6 @@
     width: 100vw;
     //direction, x, y
     @include h.flexbox(column, space-around, center);
-    padding-top: 3em;
 
     video{
         object-fit: cover;
@@ -15,42 +14,49 @@
         height: 100vh;
         z-index: -1;
         top: 0;
-        
     }
 
-    .hero__desc{
-        color: #fff;
-        @include h.flexbox(column, space-around, center);
-        padding-top: 2em;
+        .hero__intro{
+            color: #fff;
+            height: 100%;
+            width: 100%;
+            @include h.flexbox(column, center, center);
+            padding-bottom: 10em;
+            
+            .hero__title{
+                font-size: 5.2rem;
+                text-transform: uppercase;
+                font-family: 'Josefin Sans', Arial, sans-serif;
+                font-weight: normal;
+                letter-spacing: 1rem;
+                text-shadow: 2px 2px 30px #000;
 
-        h1{
-            font-size: 5.2rem;
-            text-transform: uppercase;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: normal;
-            letter-spacing: 1rem;
-            text-align: center;
+                &:hover{
+                    cursor: default;
+                }
+            }
+    
+            .hero__desc{
+                font-size: 2.3rem;
+                font-weight: 200;
+    
+                &:hover{
+                    cursor: default;
+                }
+            }
+    
+        }
 
-            &:hover{
-                cursor: default;
+        .hero__icon{
+            position: absolute;
+            margin-top: 60vh; //remember its not relative to .hero container but the entire page viewport
+            .dropdown-icon{
+                @include h.navigateIcon;
             }
         }
 
-        h3{
-            font-size: 2rem;
-            font-weight: 200;
+    
 
-            &:hover{
-                cursor: default;
-            }
-        }
-
-    }
-
-    .dropdown-icon{
-        @include h.navigateIcon;
-        margin-bottom: 5em;
-    }
 }
 
 .video{
@@ -58,8 +64,8 @@
     width: 100vw;
     height: 100vh;
     @include h.flexbox(column, space-around, center);
-    background: linear-gradient(90deg, rgb(19, 7, 23) 0%, rgb(0, 0, 0) 100%);
-
+    background: linear-gradient(to right, #21242e 50%, #171a21 100%);
+    
     .video__carousel{
         width: 100%;
         height: 80%;
@@ -91,84 +97,96 @@
     
     // @extend .hero;
     width: 100vw;
-    height: 100vh;
+    // height: 100vh;
     @include h.flexbox(column, space-between, center);
-    background: #f6f6f6;
+    // background: #1f1c1c;
+    background: linear-gradient(90deg, #21242e 50%, #171a21 100%);
+    // box-shadow: -5px 10px 20px #1a1e27 inset;
 
-    h1{
-        color: #000;
-        font-weight: bold;
-        font-size: 3rem;
-        padding-top: 6rem;
 
-        &:hover{
-            cursor: default;
-        }
-    }
+   .story__container{
 
-    .story__carousel{
-        @include h.flexbox(row, space-around, center);  
-        width: 60%;
+        @include h.flexbox(column, space-between, center);
+    
+        h1{
+            font-weight: bold;
+            font-size: 3rem;
+            padding-top: 6rem;
 
-            .story__cards{
-                background: #f6f6f6;
-                width: 16%;
-                height: 35rem;
-
-                @include h.flexbox(column, center, flex-start);
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
-                -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-                filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-
-                &:hover{
-                    transform: scale(1.15);
-                    transition: all .3s ease-in-out;
-                }
-                      
-                img{
-                    object-fit: cover;
-                }
-
-                .story__title{
-                    @include h.flexbox(row, center, center);
-                    color: #000;
-                    padding: 0.5em 0.8em;
-                    font-size: 1.2rem;
-                }
+            &:hover{
+                cursor: default;
             }
+        }
 
-    }
+        .story__carousel{
+            @include h.flexbox(row, space-around, center);  
+            // background: rgb(17, 18, 20);
+            border-radius: 10px;
+
+                .story__cards{
+                    margin: 2em 4em;
+                    background: #30333e;
+                    width: 14vw;
+                    height: 30rem;
+                    color: #D9DADE;
+                    @include h.flexbox(column, center, flex-start);
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 5px 10px 18px #000;
+
+                    &:hover{
+                        transform: scale(1.15);
+                        transition: all .3s ease-in-out;
+                    }
+                            
+                    img{
+                        object-fit: cover;
+                    }
+
+                    .story__title{
+                        @include h.flexbox(row, center, center);
+                        padding: 0.5em 0.8em;
+                        font-size: 1.1rem;
+                        font-family: 'Arial';
+                    }
+                }
+
+        }
+   }
 
     //swiper
     .story-swiper{
-        width: 70%;
+        width: 50%;
+        text-align: center;
         padding: 2em;
-        margin-bottom: 4em;
 
         .story-swiper__cards{
-            background: #f6f6f6;
             border-radius: 10px;
             overflow: hidden;
             width: 80%;
-            box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
-            -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-            filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-            @include h.flexbox(column, center, center);
 
             img{
                 object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 5px 5px 20px #000;
             }
 
-            &:hover{
-                transform: scale(1.15);
-                transition: all .3s ease-in-out;
-            }
+            // &:hover{
+
+            //     img{
+            //         transform: scale(1.15);
+            //         transition: all .2s ease-in-out;
+            //     }
+
+            //     .story-swiper__title{
+            //         transform: scale(1.05);
+            //         transition: all .2s ease-in-out;
+            //     }
+              
+            // }
 
             .story-swiper__title{
-                color: #000;
-                padding: 0.5em;
+                color: #f6f6f6;
                 font-size: 1rem;
             }
         }
