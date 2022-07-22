@@ -53,7 +53,7 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
         {/* insert the scroll icon here */}
       </section>
       <Element className={styles["video"]} name="video">
-          {/* <Swiper
+          <Swiper
             effect={"coverflow"}
             slidesPerView={3}
             spaceBetween={30}
@@ -80,10 +80,8 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
             </iframe>
           </SwiperSlide>
           ))} 
-          </Swiper> */}
-          {/* <iframe width="420" height="345" src="https://www.youtube.com/embed/r9hvgj-LOQs">
-            </iframe> */}
-         <div className={styles["hero__icon"]}> 
+          </Swiper>
+          <div className={styles["hero__icon"]}> 
             <div className= {styles["dropdown-icon"]} onClick={() => scrollTo("stories")}>
             <IoMdArrowDropdown/>
             </div>
