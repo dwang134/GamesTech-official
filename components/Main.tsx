@@ -6,13 +6,11 @@ import {Element, animateScroll as scroll, scroller } from 'react-scroll'
 import {Article} from '../pages/api/API'
 import Link from 'next/link'
 import { Swiper, SwiperSlide} from 'swiper/react';
-import { FreeMode, Scrollbar, Pagination, Navigation, EffectCoverflow} from "swiper";
+import {Pagination, Navigation, EffectCards} from "swiper";
 import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/scrollbar";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
+import "swiper/css/effect-cards";
 
 interface Props{ 
   topGames: Article[];
@@ -22,11 +20,12 @@ interface Props{
   videos: any[];
 }
 
-const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}) => {
+const Main:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}) => {
 
   const [topStories, setTopStories] = useState<Article[]>([...topGames, ...topTech])
   const [otherStories, setOtherStories] = useState<Article []>([...otherGames, ...otherTech])
   const [videoList, setVideoes] = useState<any[]>(videos)
+  const [videoActive, setVideoActive] = useState<boolean>(false);
 
   const scrollTo= (location: string) =>{
     scroller.scrollTo(`${location}`, {
@@ -52,34 +51,46 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
         {/* insert the scroll icon here */}
       </section>
       <Element className="video" name="video">
-          <Swiper
-            effect={"coverflow"}
-            slidesPerView={3}
-            spaceBetween={30}
-            slidesPerGroup={1}
-            centeredSlides={true}
-            loop={true}
-            pagination={{
-              clickable: true,
-            }}
-            coverflowEffect={{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              // slideShadows: true,
-            }}
-            navigation={true}
-            modules={[EffectCoverflow, Pagination, Navigation]}
-            className="video__carousel"
-          >
+        <Swiper
+          effect={"cards"}
+          grabCursor={true}
+          modules={[EffectCards, Navigation]}
+          className="video__carousel"
+          spaceBetween={50}
+          centeredSlides={true}
+          navigation={true}
+          nested={true}
+          preventClicks={true}
+          preventClicksPropagation={true}
+          onSlideChange={()=> console.log('slide is changed')}
+          // slideNextClass={""}
+          // slidePrevClass={""}
+        >
           {videos.map((video)=> (
-          <SwiperSlide>
-            <iframe  src={`https://www.youtube.com/embed/${video.id.videoId}`} className= "video__item">
+          <SwiperSlide key= {video.id.videoId}>
+            {/* <div> */}
+              {/* {fetchYoutubeVideo? (
+                <iframe className= "ahlie">This is basically the Youtube video</iframe>
+              ) : (
+                <div>
+                  <div className="videoHeaderRow">
+                    <img>Channel image</img>
+                    <div className="columnStart">
+                      <h2>Channel Name</h2>
+                      <h4>Some desrption</h4>
+                      <h4>Maybe views?</h4>
+                    </div>
+                  </div>
+                  <img className= "objectfitCoverFixed">This is bascially the youtube image</img>
+                  <button className= "figuer it out" onClick= {()=> fetchYoutubeVideo(true)}>Arrow here</button>
+                </div> 
+              )} */}
+            {/* </div>   */}
+            <iframe src={`https://www.youtube.com/embed/${video.id.videoId}`} className= "video__item">
             </iframe>
           </SwiperSlide>
           ))} 
-          </Swiper>
+        </Swiper>
           <div className="hero__icon"> 
             <div className= "dropdown-icon" onClick={() => scrollTo("stories")}>
             <IoMdArrowDropdown/>
@@ -112,6 +123,28 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
         navigation={true}
         modules={[Pagination, Navigation]}
         className="story-swiper"
+          // Responsive breakpoints
+        breakpoints={{
+          // when window width is >= 320px
+          2000: {
+            slidesPerView: 3,
+            spaceBetween: 30
+          },
+          // when window width is >= 480px
+          1423: {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 40
+          },
+          390: {
+            slidesPerView: 1,
+            spaceBetween: 70
+          }
+        }}       
       >
      {otherStories.map((story) => (
             <SwiperSlide>
@@ -132,4 +165,4 @@ const HeroSection:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, 
   );
 }
 
-export default HeroSection
+export default Main

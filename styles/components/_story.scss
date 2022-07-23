@@ -1,0 +1,113 @@
+@use '../abstracts/helpers' as h;
+
+.story{
+    
+    // @extend .hero;
+    width: 100vw;
+    // height: 100vh;
+    @include h.flexbox(column, space-between, center);
+    // background: #1f1c1c;
+    background: linear-gradient(90deg, #21242e 50%, #171a21 100%);
+    // box-shadow: -5px 10px 20px #1a1e27 inset;
+
+   .story__container{
+
+        @include h.flexbox(column, space-between, center);
+    
+        h1{
+            font-weight: bold;
+            font-size: 3rem;
+            padding-top: 6rem;
+            font-family: "Helvetica Neue", Helvetica, Arial;
+
+            &:hover{
+                cursor: default;
+            }
+        }
+
+        .story__carousel{
+            @include h.flexbox(row, space-around, center);  
+            // background: rgb(17, 18, 20);
+            border-radius: 10px;
+
+                .story__cards{
+                    margin: 2em 4em;
+                    background: #30333e;
+                    width: 12vw;
+                    height: 30rem;
+                    color: #D9DADE;
+                    @include h.flexbox(column, center, flex-start);
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 5px 10px 18px #000;
+
+                    &:hover{
+                        transform: scale(1.15);
+                        transition: all .3s ease-in-out;
+                    }
+                            
+                    img{
+                        object-fit: cover;
+                    }
+
+                    .story__title{
+                        @include h.flexbox(row, center, center);
+                        padding: 0.5em 0.8em;
+                        font-size: 1.1rem;
+                        font-family: 'Arial';
+                    }
+                }
+
+        }
+   }
+
+   .swiper{
+        width: 50%;
+        text-align: center;
+        padding: 2em;
+        margin: 3em 0em;
+
+        .story-swiper__cards{
+            border-radius: 10px;
+            overflow: hidden;
+            width: 80%;
+
+            img{
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 5px 5px 20px #000;
+            }
+
+            .story-swiper__title{
+                color: #f6f6f6;
+                font-size: 1rem;
+            }
+        }
+
+   }
+
+   .swiper-button-next,
+   .swiper-button-prev {
+       position: absolute;
+       color: #fff;
+       padding-bottom: 5em;
+       text-shadow: 5px 5px 30px #000;
+
+       &:hover{
+        opacity: .7;
+       }
+   }
+
+    .dropdown-icon{
+        @include h.navigateIcon; 
+        background: #505050bb;
+        color: #404040;
+
+        &:hover{
+            background: #505050;
+            color: #000;
+        }
+    }
+
+
+}

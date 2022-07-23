@@ -1,7 +1,7 @@
 import {NextPage} from 'next'
 import {useState, useEffect} from 'react'
 import Footer from '../components/Footer'
-import Hero from '../components/HeroSection'
+import Main from '../components/Main'
 import Navbar from '../components/Navbar'
 import {GetServerSideProps } from 'next'
 import {fetchArticles, fetchVideos, News, Article, categoryQuery} from '../pages/api/API'
@@ -24,7 +24,7 @@ const Home: NextPage<Props> = ({topGames, topTech, otherGames, otherTech, videoD
   return (
     <div className= "homeContainer">
     <Navbar/>
-    <Hero topGames={topGames} topTech={topTech} otherGames= {otherGames} otherTech = {otherTech} videos={videoData.items} />
+    <Main topGames={topGames} topTech={topTech} otherGames= {otherGames} otherTech = {otherTech} videos={videoData.items} />
     <Footer/>
     </div>
   )

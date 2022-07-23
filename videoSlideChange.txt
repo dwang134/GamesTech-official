@@ -1,0 +1,9 @@
+youtube embed autoplay and fullscreen and see if you can pause it
+GET THE TITLE snippet.title
+GET THE DESC snippet.description
+https://developers.google.com/youtube/v3/docs/search/list
+https://developers.google.com/youtube/v3/docs/videos#resource
+onSlideChange and when you change slide then make the videoActive state false again
+
+SWIPERJS
+https://swiperjs.com/react#swiper-props

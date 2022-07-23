@@ -1,0 +1,98 @@
+@use '../abstracts/helpers' as h;
+@use 'video';
+@use 'story';
+@use 'hero';
+
+@media screen and (max-width: 1600px){
+
+    .hero{
+        
+        .hero__desc{
+            
+            //needs to have same rooting style before media query
+            h1{
+                font-size: 3rem;
+                letter-spacing: 0.8rem;
+            }
+
+            h3{
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+        .story{
+            box-sizing: content-box;
+
+            .story__carousel{
+                background: red;
+                //make x overflow scroll
+                overflow: hidden;
+                width: 70%;
+
+                .story__cards{
+                    margin: 0.5em 1em;
+                    width: 14rem;
+                    height: 25rem;
+
+                    img{
+                        
+                    }
+
+                    .story__title{
+                    }
+
+                }
+            }
+        }
+
+
+
+}
+
+@media screen and (max-width: 1200px){
+
+    .hero{
+        
+        .hero__desc{
+            
+            //needs to have same rooting style before media query
+            h1{
+                font-size: 3rem;
+                letter-spacing: 0.8rem;
+            }
+
+            h3{
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+        .story{
+            box-sizing: content-box;
+
+            .story__carousel{
+                width: 70%;
+                background: red;
+                //make x overflow scroll
+                overflow: hidden;
+
+                .story__cards{
+                    margin: 0.5em 1em;
+                    height: 25em;
+                    width: 40%;
+
+                    img{
+                        
+                    }
+
+                    .story__title{
+                    }
+
+                }
+            }
+        }
+
+
+
+}
