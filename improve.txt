@@ -1,0 +1,17 @@
+GAMES AND TECH
+-container scaling
+-make the top button group scrollable
+-can create a seperate component for useEffect and then return it
+-fix the api to only target EN language
+
+MAINPAGE
+-fix the FOOTER --> change column style when minmzizing tune it to the same format as before
+-fix the swiper stories slider--> use react responsive and make it a column just like games and tech tab
+
+FAQ AND HOW THIS IS MADE
+-font update
+-add more content to how this is made
+
+TESTING
+-end to end testing
+-try jest, and cypress
