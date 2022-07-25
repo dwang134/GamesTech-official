@@ -1,8 +1,6 @@
 GAMES AND TECH
--container scaling
--make the top button group scrollable
 -can create a seperate component for useEffect and then return it
--fix the api to only target EN language
+-can optimize more on overall styling finish
 
 MAINPAGE
 -fix the FOOTER --> change column style when minmzizing tune it to the same format as before

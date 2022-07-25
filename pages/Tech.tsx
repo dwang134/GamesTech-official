@@ -142,7 +142,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const mainQuery = categoryQuery.Tech;
   
-  const data = await fetchArticles(`${process.env.NEWS_API_KEY}`, categoryQuery.Tech, 10, 1);
+  const data = await fetchArticles(`${process.env.NEWS_API_KEY}`, categoryQuery.Tech, 10, 1, "en");
 
   return {
     props: {data, category, mainQuery}
