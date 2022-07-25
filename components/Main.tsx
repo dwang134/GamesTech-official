@@ -9,7 +9,6 @@ import { Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, Navigation, EffectCards} from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/effect-coverflow";
 import "swiper/css/effect-cards";
 
 interface Props{ 
@@ -51,6 +50,7 @@ const Main:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}
         {/* insert the scroll icon here */}
       </section>
       <Element className="video" name="video">
+        <h1>Latest Trailers</h1>
         <Swiper
           effect={"cards"}
           grabCursor={true}
@@ -67,28 +67,27 @@ const Main:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}
           // slidePrevClass={""}
         >
           {videos.map((video)=> (
-          <SwiperSlide key= {video.id.videoId}>
-            {/* <div> */}
-              {/* {fetchYoutubeVideo? (
-                <iframe className= "ahlie">This is basically the Youtube video</iframe>
-              ) : (
-                <div>
-                  <div className="videoHeaderRow">
-                    <img>Channel image</img>
-                    <div className="columnStart">
-                      <h2>Channel Name</h2>
-                      <h4>Some desrption</h4>
-                      <h4>Maybe views?</h4>
+            /* <div>
+                {fetchYoutubeVideo? (
+                  <iframe className= "ahlie">This is basically the Youtube video</iframe>
+                ) : (
+                  <div>
+                    <div className="videoHeaderRow">
+                      <img>Channel image</img>
+                      <div className="columnStart">
+                        <h2>Channel Name</h2>
+                        <h4>Some desrption</h4>
+                        <h4>Maybe views?</h4>
+                      </div>
                     </div>
+                    <img className= "objectfitCoverFixed">This is bascially the youtube image</img>
+                    <button className= "figuer it out" onClick= {()=> fetchYoutubeVideo(true)}>Arrow here</button>
                   </div>
-                  <img className= "objectfitCoverFixed">This is bascially the youtube image</img>
-                  <button className= "figuer it out" onClick= {()=> fetchYoutubeVideo(true)}>Arrow here</button>
-                </div> 
-              )} */}
-            {/* </div>   */}
-            <iframe src={`https://www.youtube.com/embed/${video.id.videoId}`} className= "video__item">
-            </iframe>
-          </SwiperSlide>
+                )}
+              </div> */
+            <SwiperSlide key= {video.id.videoId}>
+              <iframe  src={`https://www.youtube.com/embed/${video.id.videoId}`} className= "video__item"/>
+            </SwiperSlide>
           ))} 
         </Swiper>
           <div className="hero__icon"> 
@@ -103,23 +102,21 @@ const Main:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}
           <div className="story__carousel">
             {topStories.map((story) => (
               <Link href={story.url} key={story.title}>
-                <a className="story__cards">
-                  <img src={story.urlToImage} width="300" height="600" />
-                  <h3 className="story__title">{story.title}</h3>
+                <a className="story__link">
+                  <div className="story__card">
+                    <img src={story.urlToImage} width="300" height="600" />
+                    <h3 className="story__title">{story.title}</h3>
+                  </div>
                 </a>
               </Link>
             ))}
           </div>
         </div>
         <Swiper
-        slidesPerView={3}
+        slidesPerView={"auto"}
         spaceBetween={30}
         slidesPerGroup={3}
         loop={true}
-        loopFillGroupWithBlank={true}
-        // pagination={{
-        //   clickable: true,
-        // }}
         navigation={true}
         modules={[Pagination, Navigation]}
         className="story-swiper"
@@ -133,30 +130,32 @@ const Main:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}
           // when window width is >= 480px
           1423: {
             slidesPerView: 2,
+            slidesPerGroup:2,
             spaceBetween: 30
           },
           // when window width is >= 640px
           640: {
             slidesPerView: 1,
+            slidesPerGroup:1,
             spaceBetween: 40
           },
           390: {
             slidesPerView: 1,
+            slidesPerGroup: 1,
             spaceBetween: 70
           }
         }}       
       >
      {otherStories.map((story) => (
-            <SwiperSlide>
-              <a
-                href={story.url}
-                className="story-swiper__cards"
-                key={story.title}
-              >
-                <img src={story.urlToImage} width="250" height="150" />
-                <h4 className="story-swiper__title">{story.title}</h4>
-              </a>
-            </SwiperSlide>
+              <SwiperSlide key= {story.title}>
+                <a
+                  href={story.url}
+                  className="story-swiper__cards"
+                >
+                  <img src={story.urlToImage} width="250" height="150" />
+                  <h4 className="story-swiper__title">{story.title}</h4>
+                </a>
+              </SwiperSlide>
           ))}
       </Swiper>
         {/* <div className= {styles["dropdown-icon"]} onClick = {()=> scroll.scrollToBottom()}><IoMdArrowDropdown/></div> */}

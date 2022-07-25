@@ -8,11 +8,20 @@
     @include h.flexbox(column, space-around, center);
     background: linear-gradient(to right, #21242e 50%, #171a21 100%);
     
-    
+    h1{
+      font-weight: bold;
+      font-size: 3rem;
+      padding-top: 5.5rem;
+      font-family: 'Oxygen', sans-serif;
+
+      &:hover{
+          cursor: default;
+      }
+     }
+
     .swiper {
         width: 70vw;
         height: 60%;
-        margin-top: 8em;
 
         .video__item{
             width: 100%;
@@ -35,13 +44,9 @@
       }
       
       .swiper-slide {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 18px;
-        font-size: 22px;
-        font-weight: bold;
-        color: #fff;
+        @include h.flexbox(row, center, center);
+        border: 1px solid #f6f6f6;
+        border-radius: 1rem;
       }
       
       .swiper-slide:nth-child(1n) {
@@ -68,22 +73,6 @@
         background-color: rgb(180, 10, 47);
       }
       
-      .swiper-slide:nth-child(7n) {
-        background-color: rgb(35, 99, 19);
-      }
-      
-      .swiper-slide:nth-child(8n) {
-        background-color: rgb(0, 68, 255);
-      }
-      
-      .swiper-slide:nth-child(9n) {
-        background-color: rgb(218, 12, 218);
-      }
-      
-      .swiper-slide:nth-child(10n) {
-        background-color: rgb(54, 94, 77);
-      }
-
 //    .swiper-slide-active{
 //         .video__item{
 //             width: 100%;

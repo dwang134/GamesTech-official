@@ -24,11 +24,12 @@
             padding-bottom: 10em;
             
             .hero__title{
-                font-size: 5.2rem;
+                font-size: 4vw;
                 text-transform: uppercase;
                 font-family: 'Josefin Sans', Arial, sans-serif;
                 font-weight: normal;
                 letter-spacing: 1rem;
+                text-align: center;
                 text-shadow: 2px 2px 30px #000;
 
                 &:hover{
@@ -37,7 +38,8 @@
             }
     
             .hero__desc{
-                font-size: 2.3rem;
+                text-align: center;
+                font-size: 2vw;
                 font-weight: 200;
     
                 &:hover{
@@ -56,99 +58,5 @@
         }
 
     
-
-}
-
-@media screen and (max-width: 1512px){
-
-    .hero{
-        
-        .hero__desc{
-            
-            //needs to have same rooting style before media query
-            h1{
-                font-size: 3rem;
-                letter-spacing: 0.8rem;
-            }
-
-            h3{
-                font-size: 1.5rem;
-            }
-        }
-    }
-
-        .story{
-            box-sizing: content-box;
-
-            .story__carousel{
-                background: red;
-                //make x overflow scroll
-                overflow: hidden;
-                width: 70%;
-
-                .story__cards{
-                    margin: 0.5em 1em;
-                    width: 14rem;
-                    height: 25rem;
-
-                    img{
-                        
-                    }
-
-                    .story__title{
-                    }
-
-                }
-            }
-        }
-
-
-
-}
-
-@media screen and (max-width: 1200px){
-
-    .hero{
-        
-        .hero__desc{
-            
-            //needs to have same rooting style before media query
-            h1{
-                font-size: 3rem;
-                letter-spacing: 0.8rem;
-            }
-
-            h3{
-                font-size: 1.5rem;
-            }
-        }
-    }
-
-        .story{
-            box-sizing: content-box;
-
-            .story__carousel{
-                width: 70%;
-                background: red;
-                //make x overflow scroll
-                overflow: hidden;
-
-                .story__cards{
-                    margin: 0.5em 1em;
-                    height: 25em;
-                    width: 40%;
-
-                    img{
-                        
-                    }
-
-                    .story__title{
-                    }
-
-                }
-            }
-        }
-
-
 
 }
