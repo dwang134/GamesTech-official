@@ -3,8 +3,8 @@ GAMES AND TECH
 -can optimize more on overall styling finish
 
 MAINPAGE
--fix the FOOTER --> change column style when minmzizing tune it to the same format as before
--fix the swiper stories slider--> use react responsive and make it a column just like games and tech tab
+-footer can be improved
+-fix the swiper stories slider--> use react responsive package and make it a column just like games and tech tab
 
 FAQ AND HOW THIS IS MADE
 -font update

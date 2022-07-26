@@ -11,7 +11,7 @@
     position: sticky;
     width: 100%;
     @include h.flexbox(row, space-between, center);
-    height: 7vh;
+    height: 5em;
     border-radius: 2px;
 
     .navbar__logo{
@@ -39,11 +39,11 @@
                 @extend li;
             }
     
-            li:hover{
+            &:hover{
                 background: #8378CC;
                 border-radius: 10px;
                 // border-bottom: 4px solid rgba(255, 255, 255, 0.562);
-                transition: all 0.2s ease-out;
+                // transition: all 0.2s ease;
             }
         }
     

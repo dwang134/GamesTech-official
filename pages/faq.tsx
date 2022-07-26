@@ -1,6 +1,5 @@
 import React from 'react'
 import Particle from '../components/Particle'
-import styles from '../styles/Pages.module.scss'
 
 const faq = () => {
   return (
