@@ -39,11 +39,11 @@
                 @extend li;
             }
     
-            &:hover{
+            a:hover{
                 background: #8378CC;
                 border-radius: 10px;
                 // border-bottom: 4px solid rgba(255, 255, 255, 0.562);
-                // transition: all 0.2s ease;
+                transition: all 0.2s ease;
             }
         }
     

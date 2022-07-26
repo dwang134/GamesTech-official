@@ -11,8 +11,8 @@
         @include h.flexbox(row, center, center);
         background: #0e0e10;
         border-radius: 10rem;
+        overflow: hidden;
         margin-top: 4em; 
- 
 
         button{
             background: #20202380;

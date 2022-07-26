@@ -3,7 +3,7 @@
 .main-container{
     @include h.fullscreen;
     @include h.flexbox(column, flex-start, center);
-    margin-top: 1em;
+    margin-top: 2em;
 
     .questions{
         color: #fff;
@@ -34,5 +34,31 @@
         color: #fff;
         
     }
+
+}
+
+.read-container{
+    @extend .main-container;
+    margin: 0;
+
+    .read__title{
+        text-align: center;
+    }
+
+    .demo{
+        width: 50%;
+        
+        &__header{
+            font-size: 1.8rem;
+        }
+
+        &__desc{
+            font-size: 1.1rem;
+        }
+
+
+    }
+
+    
 
 }
