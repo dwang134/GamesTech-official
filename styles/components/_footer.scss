@@ -4,25 +4,25 @@
     background: #151414;
     font-weight: 200;
     color: white;
-    @include h.flexbox(column, center, center);
+    @include h.flexbox(column, space-around, center);
     width: 100%;
 
     .footer__main{
-        @include h.flexbox(row, space-around, flex-start);
-        width: 80%;
-        padding: 4em 0em 2em 6em;
+        @include h.flexbox(row, center, flex-start);
+        width: 100%;
+        padding: 2em 0em 2em 6em;
 
     .footer__desc{
         
-        @include h.flexbox(column, space-around, flex-start);
-        width: 25%;
-        margin-top: 1em;
+        @include h.flexbox(column, center, flex-start);
+        width: 20%;
 
         .footer__logo{
             @include h.logo;
-            margin: 0;
             font-weight: 300;
             font-size: 1.5rem;
+            margin: 0;
+            padding-top: 0.5em;
 
             .joystick{
                 margin: 0em 0em 4em 3.3em;
@@ -30,9 +30,8 @@
         }
         
         p{
-            margin-top: 1.5em;
+            width: 70%;
         }
-
 
         .group-icons{
             @include h.flexbox(row, space-between, center);
@@ -45,17 +44,14 @@
 
     }
 
-    .footer__inquiries{
-        @include h.flexbox(row, space-around, flex-start);
-        width: 40%;
-
-        .group-items{
+        .footer__inquiries{
             @include h.flexbox(column, center, flex-start);
-            width: 30%;
-
+            width: 20%;
+            white-space: nowrap;
+            text-align: left;
 
             .items{
-                @include h.flexbox(column, space-around, flex-start);
+                @include h.flexbox(column, space-between, flex-start);
                 font-weight: 200;
                 color: rgb(190, 189, 189);
 
@@ -69,14 +65,12 @@
             }
 
         }
-    }
 
         .footer__news{
 
             @include h.flexbox(column, center, flex-start);
-
-            width: 25%;
-
+            width: 20%;
+            
             h3{
                 margin-bottom: 0.5em;
             }
@@ -93,7 +87,7 @@
                 border-style: solid;
                 border-color:#b7cad6;
                 background-color:#ffffff;
-                width: 100%;
+                width: 80%;
             }
         }
     
@@ -106,15 +100,24 @@
 
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 800px){
     .footer{
 
             .footer__main{
+                @include h.flexbox(column, flex-start, center); 
+
+
+                .footer__desc{
+                    width: 100%;
+                }
+
+                .footer__inquiries{
+                    width: 100%;
+                }
 
                 .footer__news{
-
+                    width: 100%;
                     #email{
-                        background: red;
                     }
                 }
             }

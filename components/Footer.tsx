@@ -9,7 +9,7 @@ const Footer:React.FC = () => {
       <div className= "footer__main">
         <div className= "footer__desc">
           <Link href= '/'><a className="footer__logo">GamesTech<FaGamepad className="joystick"/></a></Link>
-          <p>GamesTech is a website that focuses on easy to use, sleek, and modern design to better user experience when browsing their favourite articles. Our goal is to provide user the articles they are looking for at the ease of a click, and have the most pleasant experience looking through all the categories they love.</p>
+          <p>GamesTech is a website that focuses on easy to use, sleek, and modern design to better user experience when browsing their favourite articles. Our goal is to provide user with the most pleasant experience looking through all the categories they love.</p>
               <div className="group-icons">
               <div className="icon__social"><AiFillFacebook/></div>
               <div className="icon__social"><AiFillYoutube/></div>
@@ -17,15 +17,15 @@ const Footer:React.FC = () => {
               <div className="icon__social"><AiOutlineTwitter/></div>
             </div>
         </div>
-        <div className= "footer__inquiries">
-          <div className="group-items">
+        {/* <section className= "footer__inquiries"> */}
+          <div className="footer__inquiries">
             <h3>Contact Us</h3>
             <div className= "items">
               <Link href= '/contact'><a>Contact</a></Link>
               <Link href= '/support'><a>Support</a></Link>
             </div>
           </div>
-          <div className="group-items">
+          <div className="footer__inquiries">
             <h3>How this is built</h3>
             <div className= "items">
               <Link href="/read">
@@ -36,11 +36,11 @@ const Footer:React.FC = () => {
               </Link>
             </div>
           </div>
-        </div>
+        {/* </section> */}
         <div className= "footer__news">
           <h3>Newsletter</h3>
           <p>Be the first to know about the latest updated gaming & tech news! </p>
-          <input type= "text" id= "styles" placeholder="dc.wang547@gmail.com" />
+          <input type= "text" id= "email" placeholder="dc.wang547@gmail.com" />
           </div>
       </div>
       <div id= "copyright">
