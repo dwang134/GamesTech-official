@@ -7,6 +7,14 @@ export const fetchArticles = async(api_key: string, query: string, limit: number
         return data;
 }
 
+
+/*
+'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCbu2SsF-Or3Rsn3NxqODImw&maxResults=6&order=date&q=trailer&type=video&videoDefinition=high&key=[YOUR_API_KEY]' \
+--header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
+--header 'Accept: application/json' \
+--compressed
+*/
+
 export const fetchVideos = async(api_key: string, part: string, channelId:string, limit: number, orderBy:string, query:string, type:string, videoDefinition:string, publishedAfter?:Date)=> {
         // const endpoint = `https://www.googleapis.com/youtube/v3/search?key=${api_key}&part=${part}&channelId=${channelId}&q=${query}`
         const endpoint = `https://www.googleapis.com/youtube/v3/search?key=${api_key}&part=${part}&channelId=${channelId}&maxResults=${limit}&order=${orderBy}&q=${query}&type=${type}&videoDefinition=${videoDefinition}`
@@ -17,14 +25,6 @@ export const fetchVideos = async(api_key: string, part: string, channelId:string
         console.log(data);
         return data;
 }
-
- /*
-  'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCbu2SsF-Or3Rsn3NxqODImw&maxResults=6&order=date&q=trailer&type=video&videoDefinition=high&key=[YOUR_API_KEY]' \
-  --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
-  --header 'Accept: application/json' \
-  --compressed
-  */
-
 
 export type News = {
   status: string;

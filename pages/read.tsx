@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar'
 import Particle from '../components/Particle'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Readme = () => {
 
@@ -10,7 +11,14 @@ const Readme = () => {
       <div className="read-container">
         <h1 className="read__title">How is GamesTech built?</h1>
         <div className="demo">
-        <Image src="/react.png" alt="Ahlie fam" width={1000} height={500} />
+        <Image src="/sketch.png" alt="Ahlie fam" width={1000} height={500} />
+          <h2 className="demo__header">Excalidraw</h2>
+          <p className="demo__desc">
+            I used Excalidraw to do a mockup UI on how I envision the website to look like. Here's the link for the sketch: <Link href= "https://excalidraw.com/#json=SLCYcqiMBgkaYzEBI9z-R,T0KP4C2fT5UEWGn4pQ2ZGA"><a>issaSketch</a></Link>
+          </p>
+        </div>
+        <div className="demo">
+        <Image src="/React.png" alt="Ahlie fam" width={1000} height={500} />
           <h2 className="demo__header">ReactJS</h2>
           <p className="demo__desc">
             React is a javascript library that allows user to build out
@@ -25,7 +33,6 @@ const Readme = () => {
           </p>
         </div>
         <div className="demo">
-        <Image src="/react.png" alt="Ahlie fam" width={1000} height={500} />
           <h2 className="demo__header">NextJS</h2>
           <p className="demo__desc">
             NextJS is a framework built on top of React. It&apos;s awesome
@@ -42,8 +49,8 @@ const Readme = () => {
             CSR, SSR, ISR, and allows user to choose whichever rendering method
             that would best benefit the project.
           </p>
+        <Image src="/Typescript.png" alt="Ahlie fam" width={1000} height={500} />
           <div className="demo">
-        <Image src="/react.png" alt="Ahlie fam" width={1000} height={500} />
             <h2 className="demo__header">Typescript</h2>
           </div>
           <p className="demo__desc">
@@ -57,7 +64,7 @@ const Readme = () => {
           </p>
         </div>
         <div className="demo">
-        <Image src="/react.png" alt="Ahlie fam" width={1000} height={500} />
+        <Image src="/Sass.png" alt="Ahlie fam" width={1000} height={500} />
           <h2 className="demo__header">SASS</h2>
           <p className="demo__desc">
             SASS is a CSS pre-processor, its a program that lets you generate
@@ -72,7 +79,6 @@ const Readme = () => {
           </p>
         </div>
         <div className="demo">
-        <Image src="/react.png" alt="Ahlie fam" width={1000} height={500} />
           <h2 className="demo__header">APIS</h2>
           <p className="demo__desc">
             For main API which populated all the articles on this website from
@@ -82,8 +88,6 @@ const Readme = () => {
             the Youtube carousel in the middle, It was made using Youtube Data
             V3 API to fetch all the trailers, and styled with SwiperJS.
           </p>
-        <Image src="/react.png" alt="Ahlie fam" width={1000} height={500} />
-        <Image src="/react.png" alt="Ahlie fam" width={1000} height={500} />
         </div>
         <Particle />
       </div>
