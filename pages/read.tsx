@@ -1,7 +1,7 @@
-import Navbar from '../components/Navbar'
-import Particle from '../components/Particle'
-import Image from 'next/image'
-import Link from 'next/link'
+import Navbar from '../components/Navbar';
+import Particle from '../components/Particle';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Readme = () => {
 
@@ -14,7 +14,7 @@ const Readme = () => {
         <Image src="/sketch.png" alt="Ahlie fam" width={1000} height={500} />
           <h2 className="demo__header">Excalidraw</h2>
           <p className="demo__desc">
-            I used Excalidraw to do a mockup UI on how I envision the website to look like. Here's the link for the sketch: <Link href= "https://excalidraw.com/#json=SLCYcqiMBgkaYzEBI9z-R,T0KP4C2fT5UEWGn4pQ2ZGA"><a>issaSketch</a></Link>
+            I used Excalidraw to do a mockup UI on how I envision the website to look like. Here&apos;s the link for the sketch: <Link href= "https://excalidraw.com/#json=SLCYcqiMBgkaYzEBI9z-R,T0KP4C2fT5UEWGn4pQ2ZGA"><a>issaSketch</a></Link>
           </p>
         </div>
         <div className="demo">
@@ -43,8 +43,8 @@ const Readme = () => {
             in your production. Fast refresh; you dont have to keep refreshing
             the page after you make changes. Typescript support so you can just
             have it already setup with the boiler plate ready to go. Code
-            splitting/bundling; the entire application won't break in case a
-            component doesn't work. And lastly, the most popular thing NextJS
+            splitting/bundling; the entire application won&apos;t break in case a
+            component doesn&apos;t work. And lastly, the most popular thing NextJS
             has been used for. The different rendering methods! It supports SSG,
             CSR, SSR, ISR, and allows user to choose whichever rendering method
             that would best benefit the project.
@@ -57,7 +57,7 @@ const Readme = () => {
             Typescript is a superset of javascript, meaning its still javascript
             code but with extra tooling features. Typescript enforces you to
             predefine types, which is great because it allows us to write more
-            cohesive code that is meant to gets rid of unwanted behavior. It's
+            cohesive code that is meant to gets rid of unwanted behavior. It&apos;s
             great because it allwos you to have extra error checking on types
             and catches error before runtime, making it easier to debug and
             isolate problems before production.
@@ -68,23 +68,23 @@ const Readme = () => {
           <h2 className="demo__header">SASS</h2>
           <p className="demo__desc">
             SASS is a CSS pre-processor, its a program that lets you generate
-            CSS from the program's unique syntax. SASS has been extremely
+            CSS from the program&apos;s unique syntax. SASS has been extremely
             helpful, it makes CSS much more maitainable by making it modular
-            based, it's really easy to write nested selectors inside of writing
+            based, it&apos;s really easy to write nested selectors inside of writing
             the same className over and over again. It has features like
             varables for consistent theming, as well as custom @mixins! Custom
             CSS parameter functions! They are also reusable too so you can just
             @include them them in the file that you are working with and use it
-            throughout the entire project. Here's an example:
+            throughout the entire project. Here&apos;s an example:
           </p>
         </div>
         <div className="demo">
           <h2 className="demo__header">APIS</h2>
           <p className="demo__desc">
             For main API which populated all the articles on this website from
-            all the different sources, we have to thank NewsAPI. It's search
+            all the different sources, we have to thank NewsAPI. It&apos;s search
             results are accurate, and have many parameters to customize query
-            and make results make specifically tailored to user's needs. As for
+            and make results make specifically tailored to user&apos;s needs. As for
             the Youtube carousel in the middle, It was made using Youtube Data
             V3 API to fetch all the trailers, and styled with SwiperJS.
           </p>
