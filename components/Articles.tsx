@@ -101,7 +101,6 @@ const Articles:React.FC<Props> = ({data, category, mainQuery}) => {
     </div> {/* .games div*/}
   </>
   )
-  
 }
 
 export default Articles
