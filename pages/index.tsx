@@ -33,8 +33,8 @@ const Home: NextPage<Props> = ({topGames, topTech, otherGames, otherTech, videoD
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
   //fetch top 6
-  const gamesData:News = await fetchArticles(`${process.env.NEWS_API_KEY}`, categoryQuery.Games, 6, 1);
-  const techData:News = await fetchArticles(`${process.env.NEWS_API_KEY}`, categoryQuery.Tech, 6, 1);
+  const gamesData:News = await fetchArticles( categoryQuery.Games, 6, 1, "en");
+  const techData:News = await fetchArticles( categoryQuery.Tech, 6, 1, "en");
   //dividing
   const topGames:Article[] = gamesData.articles.slice(0, 2);
   const topTech:Article[] = techData.articles.slice(0, 2);

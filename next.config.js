@@ -7,6 +7,11 @@ const nextConfig = {
     YT_API_KEY: 'AIzaSyDiR5hfpbmNQStehjIQmRYHaRbwaTsn3sQ',
     // YT_API_KEY: 'AIzaSyAcEq0YQixA926mvljRRmakmCsN0qrkXJc',
     CHANNEL_ID: 'UCbu2SsF-Or3Rsn3NxqODImw',
+  },
+  experimental: {
+    images: {
+      unoptimized: true,
+    },
   }
 }
 

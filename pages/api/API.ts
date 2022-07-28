@@ -1,12 +1,17 @@
 
-export const fetchArticles = async(api_key: string, query: string, limit: number,  page: number, language?: string, sortBy?: string)=> {
+export const fetchArticles = async(query: string, limit: number,  page: number, language?: string, sortBy?: string)=> {
         //max 3 countries, 2 categories, 2 languages
-        const endpoint = `https://newsapi.org/v2/everything?apiKey=${api_key}&q=${query}&pageSize=${limit}&page=${page}`
+        const endpoint = `https://gamestech-server.herokuapp.com/api/articles?&q=${query}&pageSize=${limit}&page=${page}&language=${language}`
+        // const endpoint = `https://newsapi.org/v2/everything?apiKey=${api_key}&q=${query}&pageSize=${limit}&page=${page}&language=${language}`
+        //instead of newsapi it would be a direct request to local server /api
         const res = await fetch(endpoint);
         const data = res.json();
         return data;
 }
 
+// const dev = process.env.NODE_ENV !== 'production';
+//https://newsapi.org/v2/everything
+// const server = dev ? 'http://localhost:3000' : 'https://your_deployment.server.com';
 
 /*
 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCbu2SsF-Or3Rsn3NxqODImw&maxResults=6&order=date&q=trailer&type=video&videoDefinition=high&key=[YOUR_API_KEY]' \

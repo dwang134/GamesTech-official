@@ -1,32 +1,28 @@
-import Tech from './Tech'
-
+import Articles from '../components/Articles'
+import {GetServerSideProps } from 'next'
 import {fetchArticles, News, categoryQuery, categoryList} from './api/API'
-import {GetServerSideProps} from 'next'
 
 interface Props{
-  gamesData: News;
-  // query: string;
+  data: News;
 }
 
-const Games:React.FC<Props> = ({gamesData}) => {
+const Games:React.FC<Props> = ({data}) => {
 
   return (
-    <Tech data={gamesData} category= {categoryList.games} mainQuery ={categoryQuery.Games}/>
-  );  
+    <Articles data={data} category={categoryList.games} mainQuery={categoryQuery.Games}/>
+  );
+
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-  const dotenv = require('dotenv').config()
-
-  const gamesData = await fetchArticles(`${process.env.NEWS_API_KEY}`, categoryQuery.Games, 10, 1);
+  // Technology: Tech, PC Parts:computer, graphics card, cpu, Nvidia, FAANG
+  const data = await fetchArticles(categoryQuery.Games, 10, 1, "en");
 
   return {
-    props: {gamesData}
+    props: {data}
   }
 
 }
-
-
 
 export default Games

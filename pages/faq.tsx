@@ -2,7 +2,7 @@ import React from 'react'
 import Particle from '../components/Particle'
 import Navbar from '../components/Navbar'
 
-const faq = () => {
+const Faq = () => {
   return (
     <>
     <Navbar/>
@@ -52,4 +52,4 @@ const faq = () => {
   )
 }
 
-export default faq
+export default Faq
