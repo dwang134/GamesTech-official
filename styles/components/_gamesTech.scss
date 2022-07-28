@@ -1,0 +1,229 @@
+@use '../abstracts/helpers' as h;
+
+.gamestech{
+
+    background: #202023;
+    width: 100%;
+    @include h.flexbox(column, flex-start, center);
+    color: white;
+
+    .button-group{
+        @include h.flexbox(row, center, center);
+        background: #0e0e10;
+        border-radius: 10rem;
+        overflow: hidden;
+        margin-top: 4em; 
+
+        button{
+            background: #20202380;
+            padding: 1em 2em;   
+            color: #fff;
+            font-size: 1rem;
+
+            &:hover{
+                background: #8378CC;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .article-group{
+
+        @include h.flexbox(column, space-around, center);
+        width: 100%;
+        // background: rgba(126, 125, 125, 0.739);
+
+        .article-border{
+            border-bottom: 1px solid rgb(145, 144, 144);
+        }
+
+        .article{
+            width: 70%;
+            @include h.flexbox(row, flex-start, center);
+            padding: 1.3em 0em;
+            // border-bottom: 2px solid #fff;
+
+                .article-container{
+                    @include h.flexbox(row, flex-start, center);
+                    width: 100%;
+                    height: 14rem;
+
+                    img{
+                        width: 30%;
+                        height: 80%;
+                        border-radius: 6px;
+                        overflow: hidden;   
+                        margin: 2em 3em;
+                        object-fit: cover;
+                        box-shadow: rgba(61, 61, 61, 0.35) 0px 5px 15px;
+                        
+                        &:hover{
+                            transform: scale(1.1);
+                            transition: all .2s ease-in-out;
+                        }
+                    }   
+        
+                    .article__info{
+        
+                        width: 60%;
+                        height: 90%;
+        
+                        .article__title{
+                            font-weight: bold;
+                            font-size: 1.2rem;
+                             font-family: 'Poppins', sans-serif;
+
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                        
+                        .article__desc{
+                            font-weight: normal;
+                            font-size: 1.1rem;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2; /* number of lines to show */
+                                    line-clamp: 2; 
+                            -webkit-box-orient: vertical;
+                        }
+                
+                        .article__source{
+                        }
+
+
+                    }
+
+                }
+
+
+
+        } //.article 
+        
+      
+
+    } //.article-group
+
+
+}
+
+
+
+@media screen and (max-width: 1650px){
+
+    .gamestech{
+        
+        
+        .button-group{
+            
+            overflow-x: scroll;
+    
+            button{
+                
+    
+                &:hover{
+             
+                }
+            }
+        }
+    
+
+        .article__desc{
+            white-space: no-wrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    
+}
+
+
+@media screen and (max-width: 1200px){
+
+
+        .article-group{
+
+            @include h.flexbox(column, space-around, flex-start);
+
+            .article{
+
+                width: 100%;
+
+                .article-container{
+
+
+                    img{
+                        width: 17rem;
+                        height: 10rem;
+                    }
+                    
+
+            }
+
+        }
+
+    }
+
+}
+
+
+@media screen and (max-width: 660px){
+
+    .gamestech{
+        
+        
+        .button-group{
+            
+            width: 80%;
+            overflow-x: scroll;
+            @include h.flexbox(row, flex-start, center);
+            
+        }
+
+        .article-group{
+
+            .article{
+                @include h.flexbox(column, center, center);
+
+                .article-container{
+                    padding: 2.5em 0em;
+                    margin: 0em;
+                    height: 5rem;
+                    @include h.flexbox(row, flex-start, center);
+
+                    img{
+                        width: 13rem;
+                        height: 5rem;
+                        margin: 0;
+                    }
+                    
+                    .article__info{
+                        padding: 1em 0.5em;
+                        width: 80%;
+                        @include h.flexbox(column, center, flex-start);
+                        flex-grow: 2;
+
+                        .article__desc{
+                            display: none;
+                        }
+
+                        .article__title{
+                            margin-top: 2rem;
+                            font-size: 0.8rem;
+                        }
+
+                        .article__source{
+                            font-size: 0.7rem;
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
+    }
+    
+}

@@ -1,0 +1,108 @@
+@use '../abstracts/helpers' as h;
+@use 'video';
+@use 'story';
+@use 'hero';
+
+@media screen and (max-width: 1600px){
+
+    .hero{
+        
+        .hero__intro{
+            
+            //needs to have same rooting style before media query
+            .hero__title{
+                font-size: 4rem;
+                letter-spacing: 0.8rem;
+            }
+
+            .hero__desc{
+                font-size: 2rem;
+            }
+        }
+    }
+
+
+        .story{
+
+            .story__container{
+
+                .story__carousel{
+                    @include h.flexbox(row, flex-start, center); 
+                    overflow-x: scroll;
+                    
+                    // white-space: nowrap;
+
+                    .story__link{
+                        display: inline-block;
+
+                            .story__card{
+                                margin: 2em 0.5em 0.5em 0.5em;
+                                width: 80%;
+                            
+                                img{
+                                }
+                                
+                                .story__title{
+                                }
+                                
+                            }
+                        }
+                }
+            }
+        }
+
+
+
+}
+
+@media screen and (max-width: 1250px){
+
+    .hero{
+        
+        .hero__intro{
+            
+            //needs to have same rooting style before media query
+            .hero__title{
+                font-size: 10vw;
+                letter-spacing: 0.8rem;
+            }
+
+            .hero__desc{
+                font-size: 5vw;
+            }
+        }
+    }
+
+    // .story{
+
+    //     .story__container{
+
+    //         .story__carousel{
+    //             @include h.flexbox(row, flex-start, center); 
+    //             background: red;
+    //             overflow-x: scroll;
+                
+    //             // white-space: nowrap;
+
+    //             .story__link{
+    //                 display: inline-block;
+
+    //                     .story__card{
+    //                         margin: 2em 0.5em 0.5em 0.5em;
+    //                         width: 80%;
+                        
+    //                         img{
+    //                         }
+                            
+    //                         .story__title{
+    //                         }
+                            
+    //                     }
+    //                 }
+    //         }
+    //     }
+    // }
+
+
+
+}

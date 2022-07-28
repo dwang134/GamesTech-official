@@ -1,0 +1,62 @@
+@use '../abstracts/helpers' as h;
+
+.hero{
+
+    height: 100vh;
+    width: 100vw;
+    //direction, x, y
+    @include h.flexbox(column, space-around, center);
+
+    video{
+        object-fit: cover;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        top: 0;
+    }
+
+        .hero__intro{
+            color: #fff;
+            height: 100%;
+            width: 100%;
+            @include h.flexbox(column, center, center);
+            padding-bottom: 10em;
+            
+            .hero__title{
+                font-size: 6rem;
+                text-transform: uppercase;
+                font-family: 'Josefin Sans', Arial, sans-serif;
+                font-weight: normal;
+                letter-spacing: 1rem;
+                text-align: center;
+                text-shadow: 2px 2px 30px #000;
+
+                &:hover{
+                    cursor: default;
+                }
+            }
+    
+            .hero__desc{
+                text-align: center;
+                font-size: 3rem;
+                font-weight: 200;
+    
+                &:hover{
+                    cursor: default;
+                }
+            }
+    
+        }
+
+        .hero__icon{
+            position: absolute;
+            margin-top: 60vh; //remember its not relative to .hero container but the entire page viewport
+            .dropdown-icon{
+                @include h.navigateIcon;
+            }
+        }
+
+    
+
+}

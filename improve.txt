@@ -1,0 +1,15 @@
+GAMES AND TECH
+-can create a seperate component for useEffect and then return it
+-can optimize more on overall styling finish
+
+MAINPAGE
+-footer can be improved
+-fix the swiper stories slider--> use react responsive package and make it a column just like games and tech tab
+
+FAQ AND HOW THIS IS MADE
+-font update
+-add more content to how this is made
+
+TESTING
+-end to end testing
+-try jest, and cypress
