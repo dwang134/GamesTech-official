@@ -1,15 +1,31 @@
 GAMES AND TECH
--can create a seperate component for useEffect and then return it
--can optimize more on overall styling finish
+-can create a seperate component for useEffect and then return it (deprecated)
+-tech: clicking on faang nvidia and then faang again breaks the button (resolved when making get requqest from own node.js server)
+-can optimize more on overall styling finish 
 
 MAINPAGE
--footer can be improved
--fix the swiper stories slider--> use react responsive package and make it a column just like games and tech tab
+-fix the swiper stories slider--> use react responsive package and make it a column just like games and tech tab (NextJS Hydration error)
+-main center video section img--> modal --> fullscreen? idea is fetch video info from youtube api--> display info in the carousel --> clicking on center main button will fetch and autplay yotube video given embed parameter
+-->
 
 FAQ AND HOW THIS IS MADE
 -font update
 -add more content to how this is made
 
+FOOTER
+-contact page & support: form needs to send to an email
+-subscription: send form data to server to store user list on sub list (imeplement no-sql server to store user data, user: generated, email: emailEntered)
+
 TESTING
 -end to end testing
 -try jest, and cypress
+
+PATCH
+-links are now external: removed <Next Link/> and changed it to <a blank redirect/>
+-footer responsive media queries (1000px & 700px)
+-stories carousel width mobile adjustment (640px)
+
+
+OTHER PROBLEMS
+-alternative method to react-responsive breakpoints: https://blog.logrocket.com/developing-responsive-layouts-with-react-hooks/
+-cant use conditonal React JSX designs because NextJS pre-renders HTML without a screensize.

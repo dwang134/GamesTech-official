@@ -9,13 +9,12 @@
 
     .footer__main{
         @include h.flexbox(row, center, flex-start);
-        width: 100%;
-        padding: 2em 0em 2em 6em;
+        padding: 3em 0em;
 
     .footer__desc{
         
         @include h.flexbox(column, center, flex-start);
-        width: 20%;
+        width: 30%;
 
         .footer__logo{
             @include h.logo;
@@ -100,12 +99,12 @@
 
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
     .footer{
-
             .footer__main{
                 @include h.flexbox(column, flex-start, center); 
-
+                width: 80%;
+                padding-left: 4em;
 
                 .footer__desc{
                     width: 100%;
@@ -117,6 +116,36 @@
 
                 .footer__news{
                     width: 100%;
+                    #email{
+                    }
+                }
+            }
+
+    }
+
+}//media query
+
+
+@media screen and (max-width: 700px){
+    .footer{
+            .footer__main{
+                @include h.flexbox(column, flex-start, center); 
+                width: 100%;
+                padding-left: 0;
+
+                .footer__desc{
+                    width: 100%;
+                    @include h.flexbox(column, flex-start, center); 
+                }
+
+                .footer__inquiries{
+                    width: 100%;
+                    @include h.flexbox(column, flex-start, center); 
+                }
+
+                .footer__news{
+                    width: 100%;
+                    @include h.flexbox(column, flex-start, center); 
                     #email{
                     }
                 }

@@ -10,11 +10,11 @@ const Readme = () => {
       <Navbar />
       <div className="read-container">
         <h1 className="read__title">How is GamesTech built?</h1>
-        <div className="demo">
-        <Image src="/sketch.png" alt="Ahlie fam" width={1000} height={500} />
+        <div className="demo">  
+        <Image src="/sketch.png" alt="Ahlie fam" width={600} height={500} />
           <h2 className="demo__header">Excalidraw</h2>
           <p className="demo__desc">
-            I used Excalidraw to do a mockup UI on how I envision the website to look like. Here&apos;s the link for the sketch: <Link href= "https://excalidraw.com/#json=SLCYcqiMBgkaYzEBI9z-R,T0KP4C2fT5UEWGn4pQ2ZGA"><a>issaSketch</a></Link>
+            I used Excalidraw to do a mockup UI/UX on how I envision the website to look like. You can find the link for the sketch <Link href= "https://excalidraw.com/#json=SLCYcqiMBgkaYzEBI9z-R,T0KP4C2fT5UEWGn4pQ2ZGA"><a>here</a></Link>
           </p>
         </div>
         <div className="demo">
