@@ -12,7 +12,7 @@ interface Props{
 export const NewsArticle:React.FC<Props> = ({lastArticleRef, article, lastIndex}) => {
   return (
     <div ref= {lastArticleRef} className= {lastIndex ? "article" : "article article-border"}>
-      <a className= "article-container" href= {article.url} target='_blank'>
+      <a className= "article-container" href= {article.url} target='_blank' rel="noopener noreferrer">
         <img
           src={article.urlToImage}
           alt="Picture of article"

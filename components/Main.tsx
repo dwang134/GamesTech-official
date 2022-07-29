@@ -126,7 +126,7 @@ const Main:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}
           <h1>Today&apos;s Top Stories</h1>
           <div className="story__carousel">
             {topStories.map((story) => (
-                <a className="story__link" key= {story.title} href= {story.url} target='_blank'>
+                <a className="story__link" key= {story.title} href= {story.url} target='_blank' rel="noopener noreferrer">
                   <div className="story__card">
                     <img src={story.urlToImage} width="300" height="600" />
                     <h3 className="story__title">{story.title}</h3>
@@ -175,6 +175,7 @@ const Main:React.FC<Props> = ({topGames, topTech, otherGames, otherTech, videos}
                   href={story.url}
                   className="story-swiper__cards"
                   target='_blank'
+                  rel="noopener noreferrer"
                 >
                   <img src={story.urlToImage} width="250" height="150" />
                   <h4 className="story-swiper__title">{story.title}</h4>
