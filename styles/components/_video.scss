@@ -1,4 +1,5 @@
 @use '../utility/helper' as h;
+@use '../variable/color' as c;
 
 .video {
   width: 100vw;
@@ -30,7 +31,7 @@
   .swiper-button-next,
   .swiper-button-prev {
     position: absolute;
-    color: #fff;
+    color: c.$text-primary;
     padding-bottom: 5em;
     text-shadow: 5px 5px 30px #000;
 

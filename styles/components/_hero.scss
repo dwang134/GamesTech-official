@@ -1,4 +1,5 @@
 @use '../utility/helper' as h;
+@use '../variable/color' as c;
 
 .hero{
 
@@ -17,7 +18,7 @@
     }
 
         .hero__intro{
-            color: #fff;
+            color: c.$text-primary;
             height: 100%;
             width: 100%;
             @include h.flexbox(column, center, center);

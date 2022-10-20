@@ -1,11 +1,12 @@
 @use '../utility/helper' as h;
+@use '../variable/color' as c;
 
 .gamestech{
 
     background: #202023;
     width: 100%;
     @include h.flexbox(column, flex-start, center);
-    color: white;
+    color: c.$text-primary;
 
     .button-group{
         @include h.flexbox(row, center, center);
@@ -17,7 +18,7 @@
         button{
             background: #20202380;
             padding: 1em 2em;   
-            color: #fff;
+            color: c.$text-primary;
             font-size: 1rem;
 
             &:hover{
