@@ -1,4 +1,5 @@
-@use '../abstracts/helpers' as h;
+@use '../utility/helper' as h;
+@use '../variable/color' as c;
 
 .main-container{
     @include h.fullscreen;
@@ -6,7 +7,7 @@
     margin-top: 2em;
 
     .questions{
-        color: #fff;
+        color: c.$text-primary;
         width: 70%;
         padding: 0.5em 1em;
         font-style: Arial;
@@ -26,12 +27,12 @@
     }
 
     ul{
-        color: #fff;
+        color: c.$text-primary;
         font-size: 1.5rem;
     }
 
     p{
-        color: #fff;
+        color: c.$text-primary;
         
     }
 

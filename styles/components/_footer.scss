@@ -1,9 +1,10 @@
-@use '../abstracts/helpers' as h;
+@use '../utility/helper' as h;
+@use '../variable/color' as c;
 
 .footer{
     background: #151414;
     font-weight: 200;
-    color: white;
+    color: c.$text-primary;
     @include h.flexbox(column, space-around, center);
     width: 100%;
 
@@ -58,7 +59,7 @@
                     margin: 0.4em 0em;
 
                     &:hover{
-                        color: #fff;
+                        color: c.$text-primary;
                     }
                 }
             }
