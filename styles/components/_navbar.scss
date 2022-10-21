@@ -29,12 +29,41 @@
         margin-right: 5em;
         height: 100%;
         padding: 0em 2em;
+
+        .category-active{
+            
+            position: absolute;
+            width: 100%;
+            height: 120px;
+            top: 5em;
+            left: 0;
+            @include h.flexbox(row, center, center);
+            background: #232737;
+        
+            li{
+                margin: 0;
+                padding: 0;
+                font-size: 1rem;
+                
+            }
+        
+        }
+
+        .category-default{
+            display: none;
+        }
+
+
+        .menu__section{
+            display: none;
+        }
     
         li{ 
             list-style: none;
             @include h.flexbox(row, center, center);
             height: 90%;
             width: 90%;
+
             // padding: 0em 2em;
             
             a{  
@@ -46,6 +75,7 @@
             a:hover{
                 background: c.$bg-accent;
                 transition: all 0.3s ease;
+                cursor: pointer;
                 // border-bottom: 4px solid rgba(255, 255, 255, 0.562);
             }
         }
@@ -94,6 +124,8 @@
 //has to follow same format before media
 .navbar{
 
+    // font-family: Helvetica, serif, Roboto, BlinkMacSystemFont, Segoe UI;
+
     .menu-icon{
         @include h.flexbox(row, center, center);
         font-size: 1.5rem;
@@ -115,34 +147,57 @@
 
     //when menu icon is clicked
     .menu-active{
-        @include h.flexbox(column, space-around, center);
+        @include h.flexbox(row, flex-start, flex-start);
         background: #242222f8;
         flex-direction: column;
         position: absolute;
-        top: 4rem;
+        top: 4em;
         width: 100%;
-        height: 55vh;
-        padding: 2em 1em;
+        height: 100vh;
+        font-family: Arial, serif, Roboto, BlinkMacSystemFont, Segoe UI;
+
+        // padding: 1em;
         
         //can blur out the background as menu is active
+        .category-active{
+            display: none;
+        }
+
+
+        .menu__header{
+            margin: 0.5em 0em;
+            padding: 0;
+            font-weight: normal;
+        }
+
+        .menu__games{
+            @include h.flexbox(column, flex-start, flex-start);
+            background: red;
+        }
+
+        .menu__tech{
+            @extend .menu__games;
+        }
 
         li{
             all: initial; //reset
             list-style: none;
-            font-size: 1.4rem;
+            font-size: 1rem;
+            padding: 0.5em 0em;
             @include h.flexbox(row, center, center);
-            height: 100%;
             color: c.$text-primary;
-            font-family: 'Titillium Web', BlinkMacSystemFont, Segoe UI, Roboto;
 
-            &:hover{
-                background-color: c.$text-primary;
-                border-radius: 5px;
-                color: #000;
-                width: 100%;
-                transition: all 0.2s ease-out;
-                cursor: pointer;
-            }
+            font-family: Arial, serif, Roboto, BlinkMacSystemFont, Segoe UI;
+        
+            
+            // &:hover{
+            //     background-color: c.$text-primary;
+            //     border-radius: 5px;
+            //     color: #000;
+            //     width: 100%;
+            //     transition: all 0.2s ease-out;
+            //     cursor: pointer;
+            // }
         }
     }
 }//navbar
