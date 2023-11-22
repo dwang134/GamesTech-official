@@ -1,9 +1,11 @@
 
 export const fetchArticles = async(query: string, limit: number,  page: number, language?: string, sortBy?: string)=> {
         //max 3 countries, 2 categories, 2 languages
-        const endpoint = `https://gamestech.onrender.com/api/articles?&q=${query}&pageSize=${limit}&page=${page}&language=${language}`
+        const endpoint = `https://gamestech-backend.vercel.app/api/articles?&q=${query}&pageSize=${limit}&page=${page}&language=${language}`
+        // previous endpoint: https://gamestech.onrender.com/api/articles?&q=${query}&pageSize=${limit}&page=${page}&language=${language}
         // const endpoint = `https://newsapi.org/v2/everything?apiKey=${api_key}&q=${query}&pageSize=${limit}&page=${page}&language=${language}`
         //instead of newsapi it would be a direct request to local server /api
+        console.log(endpoint);
         const res = await fetch(endpoint);
         const data = res.json();
         return data;
